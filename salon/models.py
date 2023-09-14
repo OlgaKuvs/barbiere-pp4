@@ -14,15 +14,50 @@ class Service(models.Model):
 
 class Barber(models.Model):
     name = models.CharField(max_length=50, unique=True)
-    is_available = models.BooleanField(default=True, null=False, blank=False) 
+    services = models.ManyToManyField(Service, related_name ='services')
+    is_available = models.BooleanField(
+        default=True, 
+        null=False, 
+        blank=False) 
 
     def __str__(self):
         return self.name
     
 
-class Working_hours(models.Model):
-    barber = models.ForeignKey(to=Barber, on_delete=models.CASCADE)
-    time_start = models.DateTimeInput(auto_now=False, auto_now_add=False)
-    time_end = models.DateTimeInput(auto_now=False, auto_now_add=False)
+class WorkingHours(models.Model):
+    barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barber')
+    date = models.DateField(
+        auto_now=False, 
+        auto_now_add=False, 
+        null=False, 
+        blank=False, 
+        verbose_name="Date")
+    time_start = models.TimeField(
+        auto_now=False, 
+        auto_now_add=False,
+        null=False, 
+        blank=False, 
+        verbose_name="Start time")
+    time_end = models.TimeField(
+        auto_now=False, 
+        auto_now_add=False,
+        null=False, 
+        blank=False, 
+        verbose_name="End time")
+
+    class Meta:
+        verbose_name = 'Working Hours'
+        verbose_name_plural = 'Working Hours' 
+
+    def __str__(self):
+        return f"{self.barber}, {self.date} {self.time_start} - {self.time_end}"
+    
+
+
+
+    
+
+
+
 
 
