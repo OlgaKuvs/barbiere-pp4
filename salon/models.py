@@ -1,6 +1,9 @@
 from django.db import models
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
+import calendar
+
+DAYS = ((0, 'Monday'), (1, 'Tuesday'), (2, 'Wednesday'), (3, 'Thursday'), (4, 'Friday'), (5, 'Saturday'), (6, 'Sunday'),) 
 
 
 class Service(models.Model):
@@ -26,12 +29,7 @@ class Barber(models.Model):
 
 class WorkingHours(models.Model):
     barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barber')
-    date = models.DateField(
-        auto_now=False, 
-        auto_now_add=False, 
-        null=False, 
-        blank=False, 
-        verbose_name="Date")
+    day_of_week = models.IntegerField(choices=DAYS, default=0)     
     time_start = models.TimeField(
         auto_now=False, 
         auto_now_add=False,
@@ -47,10 +45,10 @@ class WorkingHours(models.Model):
 
     class Meta:
         verbose_name = 'Working Hours'
-        verbose_name_plural = 'Working Hours' 
+        verbose_name_plural = 'Working Hours'     
 
-    def __str__(self):
-        return f"{self.barber}, {self.date} {self.time_start} - {self.time_end}"
+    def __str__(self):        
+        return f"{self.barber}, day {self.day_of_week}, time {self.time_start} - {self.time_end}"
     
 
 

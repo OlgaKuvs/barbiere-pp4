@@ -5,4 +5,3 @@ from .models import *
 admin.site.register(Service)
 admin.site.register(Barber)
 admin.site.register(WorkingHours)
-
