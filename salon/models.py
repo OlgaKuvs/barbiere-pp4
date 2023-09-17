@@ -1,12 +1,12 @@
 from django.db import models
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User, AbstractUser
 from cloudinary.models import CloudinaryField
-import calendar
 
 DAYS = ((0, 'Monday'), (1, 'Tuesday'), (2, 'Wednesday'), (3, 'Thursday'), (4, 'Friday'), (5, 'Saturday'), (6, 'Sunday'),) 
 
 
 class Service(models.Model):
+    # Service model for storing barber services data.
     name = models.CharField(max_length=200, unique=True)
     duration = models.IntegerField()
     price = models.DecimalField(max_digits=5, decimal_places=2)
@@ -16,6 +16,7 @@ class Service(models.Model):
     
 
 class Barber(models.Model):
+    # Barber model for storing barber data.
     name = models.CharField(max_length=50, unique=True)
     services = models.ManyToManyField(Service, related_name ='services')
     is_available = models.BooleanField(
@@ -28,7 +29,8 @@ class Barber(models.Model):
     
 
 class WorkingHours(models.Model):
-    barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barber')
+    # WorkingHours model for storing barber's working days and hours
+    barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barbers')
     day_of_week = models.IntegerField(choices=DAYS, default=0)     
     time_start = models.TimeField(
         auto_now=False, 
@@ -48,10 +50,15 @@ class WorkingHours(models.Model):
         verbose_name_plural = 'Working Hours'     
 
     def __str__(self):        
-        return f"{self.barber}, day {self.day_of_week}, time {self.time_start} - {self.time_end}"
-    
+        return f"{self.barber}, day {self.day_of_week}, time {self.time_start} - {self.time_end}"   
+  
 
-
+class Booking(models.Model):
+    #Booking model for storing booking data.
+    customer = models.ForeignKey(User, on_delete=models.CASCADE, related_name='customers')
+    barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barber_list')
+    date =  models.DateTimeField(auto_now=False, auto_now_add=False)   
+    service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_list')
 
     
 
