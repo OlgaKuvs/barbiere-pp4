@@ -1,4 +1,4 @@
-<option selected>Choose the day</option>
-{% for working_day in working_days %}
-<option value="{{ working_day.id}}">{{ working_day.get_day_of_week_display }}</option>
+<option selected disabled>Choose the date</option>
+{% for day in string_days %}
+  <option value="{{ day }}">{{ day }}</option>
 {% endfor %}
