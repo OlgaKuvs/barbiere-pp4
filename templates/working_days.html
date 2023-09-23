@@ -1,4 +1,4 @@
-<option selected disabled>Choose the date</option>
-{% for day in string_days %}
-  <option value="{{ day }}">{{ day }}</option>
+<option selected disabled>Choose the date and time</option>
+{% for visit_time in visit_times %} 
+    <option value="{{ visit_time }}">{{ visit_time }}</option>  
 {% endfor %}

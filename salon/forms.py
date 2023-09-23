@@ -13,8 +13,7 @@ class ServiceForm(forms.Form):
             widget=forms.Select(attrs={'hx-get': 'working_days/', 'hx-target': '#id_working_days',
             'hx-include': '[name="barber"]' }))
     working_days = forms.ModelChoiceField(queryset=WorkingHours.objects.none(), label='Dates',
-            widget=forms.Select(attrs={'hx-get': 'working_hours/', 'hx-target': '#id_working_hours'}))
-    working_hours = forms.ModelChoiceField(queryset=WorkingHours.objects.none(), label='Working Hours')
+            widget=forms.Select(attrs={'hx-get': 'working_hours/', 'hx-target': '#id_working_hours'}))  
     
 
     def __init__(self, *args, **kwargs):
@@ -23,8 +22,7 @@ class ServiceForm(forms.Form):
         #self.helper.form_action = reverse_lazy('index')
         # self.helper.form_method = 'POST'
         self.helper.add_input(Submit('submit', 'Submit'))
-        self.initial['service'] = 'Choose the service'
-        # self.fields['service'].initial = "Choose the service"
+        self.initial['service'] = 'Choose the service'       
         
 
         if 'service' in self.data:
@@ -33,12 +31,8 @@ class ServiceForm(forms.Form):
 
         if 'barber' in self.data:
             barber_id = int(self.data.get('barber'))
-            self.fields['working_days'].queryset = WorkingHours.objects.filter(barber = barber_id)    
-
-        if 'working_days' in self.data:
-            working_hours_id = int(self.data.get('working_days'))
-            self.fields['time_start'].queryset = WorkingHours.objects.filter(time_start = working_hours_id)
-            # self.request.POST.get('barber')
+            self.fields['working_days'].queryset = WorkingHours.objects.filter(barber = barber_id)      
+            
             
     class Meta:
         model = Service
