@@ -1,4 +1,22 @@
-<option selected disabled>Choose the date and time</option>
-{% for visit_time in visit_times %} 
-    <option value="{{ visit_time }}">{{ visit_time }}</option>  
-{% endfor %}
+<select id="wd" title="visit_time" class="form-select form-select-sm mb-3" onchange="stateHandle2()">
+    <option selected disabled>Choose the date and time</option>
+    {% for visit_time in visit_times %} 
+        <option value="{{ visit_time }}">{{ visit_time }}</option>  
+    {% endfor %}
+</select>
+
+<script type="text/javascript">
+    function stateHandle2() {
+        service = document.getElementById("service");
+        barber = document.getElementById("barber");
+        working_days = document.getElementById("wd");    
+        
+        if(service.selectedIndex > 0 && barber.selectedIndex > 0 
+            && working_days.selectedIndex > 0)  {           
+            button.disabled = false; 
+        } 
+        else {
+            button.disabled = true;
+        }
+    }
+</script>

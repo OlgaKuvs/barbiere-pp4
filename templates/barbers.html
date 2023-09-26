@@ -1,7 +1,41 @@
-<option selected disabled>Choose the barber</option>
-{% for barber in barbers %}
-<option value="{{ barber.id}}">{{ barber.name }}</option>
-{% endfor %}
+<select name="barber" title="barbers" class="form-select form-select-sm mb-3"
+    id="barber" 
+    hx-get="{% url 'working_days' %}"
+    hx-trigger="change"
+    hx-target="#working_days" onchange="stateHandle1()">
+    <option selected disabled>Choose the barber</option>
+    {% for barber in barbers %}
+    <option value="{{ barber.id }}">{{ barber.name }}</option>
+    {% endfor %}
+</select>
+
+{% if is_htmx %}
+<div id="wd" class="my-4" hx-swap-oob="true">
+    {% include 'working_days.html' %}
+</div>
+{% endif %}
+
+<script type="text/javascript">
+    function stateHandle1() {
+        service = document.getElementById("service");
+        barber = document.getElementById("barber")
+        working_days = document.getElementById("wd")
+        working_days.selectedIndex = 0       
+
+        if(service.selectedIndex > 0 && barber.selectedIndex > 0 
+            && working_days.selectedIndex > 0 )  {
+            console.log("ddd");  
+            button.disabled = false; 
+        } 
+        else {
+            button.disabled = true;
+        }
+    }
+</script>
+
+    
+
+
 
 
 
