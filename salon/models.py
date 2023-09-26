@@ -7,8 +7,7 @@ DAYS = ((0, 'Monday'), (1, 'Tuesday'), (2, 'Wednesday'), (3, 'Thursday'), (4, 'F
 
 class Service(models.Model):
     # Service model for storing barber services data.
-    name = models.CharField(max_length=200, unique=True)
-    duration = models.IntegerField()
+    name = models.CharField(max_length=200, unique=True)    
     price = models.DecimalField(max_digits=5, decimal_places=2)
 
     def __str__(self):
@@ -60,7 +59,8 @@ class Booking(models.Model):
     date =  models.DateTimeField(auto_now=False, auto_now_add=False)   
     service = models.ForeignKey(Service, on_delete=models.CASCADE, related_name='service_list')
 
-    
+    def __str__(self):        
+        return f"User: {self.customer}, Barber: {self.barber}, Service: {self.service}, Date: {self.date}" 
 
 
 

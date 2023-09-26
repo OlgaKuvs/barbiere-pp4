@@ -11,26 +11,36 @@ def index(request):
    return render(request, 'index.html')
 
 def booking(request): 
-    services = Service.objects.all()
-    return render(request, 'booking.html', {'services': services })  
-#             form.save() 
-#             service = request.POST.get('service')
-#             barber = request.POST.get('barber')
-#             working_days = request.POST.get('working_days')
-#             print("aaa", service)            
-# #Store service, barber and date in django session:
-#             request.session['service'] = service
-#             request.session['barber'] = barber
-#             request.session['working_days'] = working_days
-#             return redirect('booking_submit') 
+    services = Service.objects.all()  
 
-    # form = ServiceForm() 
-    # return render(request, 'booking.html', {'form': form})     
+    return render(request, 'booking.html', {'services': services }) 
+          
+    
+def save_form(request):    
+    if request.method == 'POST':
+        # form = ServiceForm(request.POST)
+        # if form.is_valid():      
+        customer = User.objects.get(username='Alex')
+        service = request.POST.get('service')
+        barber = request.POST.get('barber')       
+        working_days = request.POST.get('working_days')
+        print("AAA", working_days)
+        format = "%A, %d %B, %Y   %H:%M"
+        date = datetime.strptime(working_days, format)
+        
+        booking = Booking.objects.create(
+            customer=customer, 
+            barber=Barber.objects.get(id=int(barber)),
+            date=date, 
+            service=Service.objects.get(id=int(service)),
+            ) 
+        booking.save()
+    return render(request, "index.html",{})   
 
 def barbers(request):    
-    service_id = request.GET.get("service")    
+    service_id = request.GET.get("service")      
     barbers = Barber.objects.filter(services = service_id)   
-    context = {'barbers': barbers, 'is_htmx': True}   
+    context = {'barbers': barbers, 'is_htmx': True}      
     return render(request, 'barbers.html', context )
 
 def working_days(request):
@@ -48,7 +58,9 @@ def working_days(request):
                 while next_time.hour < work_day.time_end.hour:
                     visit_time = next_time.strftime("%A, %d %B, %Y   %H:%M")                    
                     visit_times.append(visit_time)
-                    next_time = next_time + timedelta(hours=1)                        
+                    next_time = next_time + timedelta(hours=1)
+ 
+    request.session['fav_color'] = visit_times                        
     return render(request, 'working_days.html', {'visit_times': visit_times})
 
 

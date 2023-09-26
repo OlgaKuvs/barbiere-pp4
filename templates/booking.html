@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<form>
+<form action="{% url 'save_form' %}" method="POST">
     {% csrf_token %}
     <select id='service' name="service" title="services" class="form-select form-select-sm mb-3"
         hx-get="{% url 'barbers' %}"

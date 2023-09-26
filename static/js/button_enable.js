@@ -11,7 +11,7 @@
     function stateHandle() {
         service = document.getElementById("service");
         barber = document.getElementById("barber");
-        working_days = document.getElementById("wd");
+        working_days = document.getElementById("working_days");
         barber.selectedIndex = 0;
         working_days.selectedIndex = 0; 
 

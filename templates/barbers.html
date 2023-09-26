@@ -10,7 +10,7 @@
 </select>
 
 {% if is_htmx %}
-<div id="wd" class="my-4" hx-swap-oob="true">
+<div id="working_days" class="my-4" hx-swap-oob="true">
     {% include 'working_days.html' %}
 </div>
 {% endif %}
@@ -19,12 +19,11 @@
     function stateHandle1() {
         service = document.getElementById("service");
         barber = document.getElementById("barber")
-        working_days = document.getElementById("wd")
+        working_days = document.getElementById("working_days")
         working_days.selectedIndex = 0       
 
         if(service.selectedIndex > 0 && barber.selectedIndex > 0 
-            && working_days.selectedIndex > 0 )  {
-            console.log("ddd");  
+            && working_days.selectedIndex > 0 )  {          
             button.disabled = false; 
         } 
         else {
