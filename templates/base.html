@@ -10,98 +10,94 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">    
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100">    
+    <div class="wrapper">
+        <div class="container-fluid nav-container navbar-d navbar-fixed-top sticky-top">
+           <nav class="navbar navbar-expand-lg">
+              <div>
+                 <a class="navbar-brand logo" href="#"><img src="{% static 'img/logo.png' %}" alt="Barbershop"></a>                           
+                 <a class="navbar-brand brand link" href="#">Barbiere Maestro</a> 
+              </div>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+              </button>                             
+              <div class="collapse navbar-collapse nav-r" id="navbarDropdown">
+                 <ul class="navbar-nav ms-auto menu">
+                    <li class="nav-item mr-2">
+                       <a class="nav-link link choosen" aria-current="page" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link link" href="#">Our staff</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link link" href="#">Gallery</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link link" href="#">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                       <a class="nav-link link" id="login" href="#">Login</a>
+                    </li>
+                 </ul>
+              </div>
+           </nav>
+        </div>
+        <div class="container-fluid hero-container">
+           <div class="row">
+              <div class="d-flex justify-content-end">           
+                 <a href="#">Sing up and Book now!</a>     
+              </div>
+           </div>
+           <div class="row" >
+              <div class="d-flex justify-content-center sl-box">
+                 <h1 id="slogan">Your best look</h1>
+              </div>
+           </div>
+        </div>
+    </div>
+       
+     {% block content %}
 
-    
-        <div class="wrapper">
-            <div class="container-fluid nav-container navbar-d navbar-fixed-top sticky-top">
-                <nav class="navbar navbar-expand-lg">
-                    <div>
-                        <a class="navbar-brand logo" href="#"><img src="{% static 'img/logo.png' %}" alt="Barbershop"></a>                           
-                        <a class="navbar-brand brand link" href="#">Barbiere Maestro</a> 
-                    </div>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>                             
-                    <div class="collapse navbar-collapse nav-r" id="navbarDropdown">
-                        <ul class="navbar-nav ms-auto menu">
-                            <li class="nav-item mr-2">
-                                <a class="nav-link link choosen" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link" href="#">Services</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link" href="#">Our staff</a>
-                            </li> 
-                            <li class="nav-item">
-                                <a class="nav-link link" href="#">Gallery</a>
-                            </li>  
-                            <li class="nav-item">
-                                <a class="nav-link link" href="#">Contact</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link link" id="login" href="#">Login</a>
-                            </li>         
-                        </ul>       
-                    </div>  
-                </nav>
-            </div>
-                <div class="container-fluid hero-container">
-                    <div class="row">                       
-                        <div class="d-flex justify-content-end">           
-                                <a href="#">Sing up and Book now!</a>     
-                        </div>
-                    </div>
-                    <div class="row" >
-                        <div class="d-flex justify-content-center sl-box">   
-                            <h1 id="slogan">Your best look</h1>     
-                        </div>        
-                    </div>
-                </div>
-            </div>
-        </div>    
-        
+     {% endblock %}
 
-        {% block content %}
-        {% endblock %}
-
-        <div class="footer">
-            <div class="container">
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4">
-                        <div class="footer_content">
-                          <h5>Opening Hours</h5>
-                          <ul>
-                            <li class="mb-3">Mon - Fri: 9.00 - 19.00</li>                      
-                            <li class="mb-3">Sat: 10.00 - 17.00</li>
-                            <li class="mb-3">Sun: Closed</li>                                      
-                        </ul>
-                        </div>
-                  </div>         
-                  <div class="col-lg-6 col-md-auto col-xs-auto col-sm-auto">
-                        <div class="footer_content footer_sign_in centered">
-                            <a href="#">Sing up and Book now!</a>                 
-                        </div>
-                  </div>
-                  <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4 menu-r ">
-                        <div class="footer_content">
-                            <h5>Contact</h5>
-                            <ul>
-                                <li class="mb-3">1 Upper Road, Dublin</li>
-                                <li class="mb-3"> Ireland </li>
-                                <li class="mb-3"> email@yahoo.com</li>                    
-                            </ul>
-                        </div>
-                  </div>
-                </div>
-             </div>
-            <!-- Copyright -->
-            <div class="text-center p-3 copyright">
-              <span>© 2023 Copyright: Olga Kuv</span>
-            </div>
-          </div>
-    
+     <div class="footer">
+        <div class="container">
+           <div class="row">
+              <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4">
+                 <div class="footer_content">
+                    <h5>Opening Hours</h5>
+                    <ul>
+                       <li class="mb-3">Mon - Fri: 9.00 - 19.00</li>
+                       <li class="mb-3">Sat: 10.00 - 17.00</li>
+                       <li class="mb-3">Sun: Closed</li>
+                    </ul>
+                 </div>
+              </div>
+              <div class="col-lg-6 col-md-auto col-xs-auto col-sm-auto">
+                 <div class="footer_content footer_sign_in centered">
+                    <a href="#">Sing up and Book now!</a>                 
+                 </div>
+              </div>
+              <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4 menu-r ">
+                 <div class="footer_content">
+                    <h5>Contact</h5>
+                    <ul>
+                       <li class="mb-3">1 Upper Road, Dublin</li>
+                       <li class="mb-3"> Ireland </li>
+                       <li class="mb-3"> email@yahoo.com</li>
+                    </ul>
+                 </div>
+              </div>
+           </div>
+        </div>
+        <!-- Copyright -->
+        <div class="text-center p-3 copyright">
+           <span>© 2023 Copyright: Olga Kuv</span>
+        </div>
+     </div>
 <script type="text/javascript" src="{% static 'js/button_enable.js' %}"></script>   
 <script src="https://unpkg.com/htmx.org@1.9.5" integrity="sha384-xcuj3WpfgjlKF+FXhSQFQ0ZNr39ln+hwjN3npfM9VBnUskLolQAcN80McRIVOPuO" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>    
