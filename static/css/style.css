@@ -2,3 +2,164 @@
     display: none; 
 } 
 
+@import url('https://fonts.googleapis.com/css2?family=Lato&family=Raleway&display=swap');
+
+body {
+    background-color: #eee;
+    font-family: Lato;
+    font-weight: 300;
+    font-size: 16px;
+    color: #222227;
+    margin-top: 0px;   
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: "Raleway";
+    font-weight: 300; 
+    text-transform: uppercase;    
+}
+
+h3 {
+   color: #f75c37;
+   padding: 15px 0 15px 0;
+}
+
+h4 {
+   color: #9e8a78;
+}
+
+
+p {
+    line-height: 30px;
+    margin-bottom: 25px;
+}
+
+.centered, .wrapper {
+    text-align: center;   
+}
+
+.link {
+    color: #eee;
+    text-transform: uppercase; 
+    font-size: 14px; 
+}
+
+.link:hover, .link:focus  {
+    color: #9e8a78;
+    text-decoration: none;
+    outline: 0;
+}
+
+hr {
+    width: 50%;
+    margin: 0 auto;     
+    border-top: 1px solid #f75c37;
+    /*margin: 1em 0; */
+    padding-bottom: 15px;    
+}
+
+
+
+/* Navbar */
+
+.nav-container {
+    font-weight: 800;
+    font-size: 16px;   
+}
+
+.nav-r {
+    justify-content: end;   
+    padding-right: 20px; 
+} 
+
+.navbar-d {
+    background: #222227;
+    border-color: #222227;      
+}
+
+.choosen, .copyright  {
+    color: #9e8a78;
+}
+
+.brand {
+    color: #9e8a78;
+    font-weight: bolder;
+    font-size: 22px;
+    letter-spacing: 1px;        
+}
+
+
+.navbar-toggler, .navbar-toggler:focus,
+.hero-container a:hover, .footer_content a:hover,
+.hero-container a:focus, .footer_content a:focus  {    
+    border-style: none; 
+    color: #eee;          
+  }
+
+.navbar-toggler-icon { 
+    background-color: #9e8a78;  
+    color: #eee;
+    border-style: 1px solid #9e8a78; 
+    border-radius: 20%;
+}
+
+.logo {
+    margin-left: 50px;
+}
+
+.menu {
+    float: right;
+    margin-right: 20px;
+}
+
+#login {
+    margin-left: 20px;
+    background-color: #f75c37;
+    color: #222227;
+    font-weight: 600;
+    border-color: #f75c37;
+    border-radius: 20px;    
+    padding: 7px;
+    letter-spacing: 2px;
+}
+
+/* Hero image container */
+
+.hero-container {      
+    background: url(../img/barbera-hero.jpg) no-repeat center top; 
+    min-height: 500px;
+    width: 100%;    
+    padding-top: 30px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    position: relative;      
+}
+
+.hero-container a, .footer_sign_in a {   
+    color: #222227;  
+    font-size: 20px;
+    font-weight: 400;  
+    background-color: #f16a48;
+    border-color: #f75c37;
+    border-radius: 20px;
+    margin-right: 20px;
+    padding: 10px;
+    text-decoration: none;     
+}
+
+#slogan {    
+    color: #9e8a78; 
+    font-size: 50px;    
+    font-weight: 800;   
+    text-transform: uppercase;  
+    text-shadow: -2px -2px 7px rgba(0,0,0,.8), -2px -2px 3px rgba(255,255,255,.6);
+}
+
+.sl-box {
+    height: 400px;    
+    flex-direction: row;        
+    align-items: flex-end;
+    letter-spacing: 5px;
+}
