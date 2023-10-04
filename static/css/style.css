@@ -60,7 +60,7 @@ hr {
 
 .nav-container {
     font-weight: 800;
-    font-size: 16px;   
+    font-size: 16px;        
 }
 
 .nav-r {
@@ -70,7 +70,7 @@ hr {
 
 .navbar-d {
     background: #222227;
-    border-color: #222227;      
+    border-color: #222227;       
 }
 
 .choosen, .copyright  {
@@ -112,11 +112,10 @@ hr {
     margin-left: 20px;
     background-color: #f75c37;
     color: #222227;
-    font-weight: 600;
+    font-weight: 600;   
     border-color: #f75c37;
     border-radius: 20px;    
-    padding: 7px;
-    letter-spacing: 2px;
+    padding: 7px;   
 }
 
 /* Hero image container */
@@ -213,12 +212,53 @@ hr {
 }
 
 .btn-reg:hover,
-#login:hover  {
+.hero-container a:hover,
+#login:hover,
+.footer_sign_in a:hover  {
     background-color: #f75c37;
     color: #eee;
-    transition: 0.3s;   
+    transition: 0.5s;   
     text-decoration: none;
 }
+
+/* Forms */
+
+.custom-label {
+    justify-content: start;   
+}
+
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+    margin-bottom: 30px;
+}
+
+.card-body {
+    flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
+.card-header {
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 0;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.card-footer {
+    padding: 0.75rem 1.25rem;
+    background-color: rgba(0, 0, 0, 0.03);
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+}
+
 
 
 /* Footer */
@@ -268,6 +308,14 @@ hr {
     object-fit: cover;
 } 
 
-/* .asteriskField {
-    display: none; 
-}  */
+.w-50 {
+    width: 600px !important;
+}
+
+
+/* Media  */
+@media only screen and (max-width: 600px) {   
+    .form-container {
+        width: 100% !important;
+    }
+  }

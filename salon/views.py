@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import authenticate, login, logout
 from datetime import datetime, timedelta
-# from .forms import ServiceForm 
+from .forms import CustomerForm 
 from .models import Service, Barber, WorkingHours, Booking, User
 
 # Create your views here.
@@ -72,6 +74,28 @@ def available_weekday(days):
         a = next_day + timedelta(days=i) 
         free_dates.append(a)           
     return free_dates
+
+
+def user_registration(request):    
+    if request.method == 'POST':
+        form = CustomerForm(request.POST)
+        if form.is_valid():
+            form.save()
+            user = form.cleaned_data.get('username')
+            messages.success(request, user + ', your account is created successfully!')            
+            return redirect('login')
+        else: 
+            messages.error(request, "Please fill out all fields")  
+            context = {'form': form}
+            return render(request, 'registration.html', context)            
+    
+    form = CustomerForm()
+    context = {'form': form}
+    return render(request, 'registration.html', context)
+
+
+def user_login(request):     
+    return render(request, 'login.html')
 
 
 
