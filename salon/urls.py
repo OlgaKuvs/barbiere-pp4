@@ -23,6 +23,7 @@ urlpatterns = [
     path('save_form/', views.save_form, name='save_form'),
     path('barbers/', views.barbers, name='barbers'),
     path('working_days/', views.working_days, name='working_days'),
-    path('registration/', views.user_registration, name='registration'), 
-    path('login/', views.user_login, name='login'),       
+    path('registration/', views.user_registration, name='registration'),
+    path('login/', views.user_login, name='login'),
+    path('profile/', views.user_profile, name='profile'),
 ]

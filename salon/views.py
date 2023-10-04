@@ -4,7 +4,7 @@ from django.contrib import messages
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate, login, logout
 from datetime import datetime, timedelta
-from .forms import CustomerForm 
+from .forms import CustomerForm, LoginForm 
 from .models import Service, Barber, WorkingHours, Booking, User
 
 # Create your views here.
@@ -94,8 +94,26 @@ def user_registration(request):
     return render(request, 'registration.html', context)
 
 
-def user_login(request):     
-    return render(request, 'login.html')
+def user_login(request):    
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            messages.success(request, username + ', you are logged in!')  
+            login(request, user)                      
+            return redirect('profile')
+        else:
+            messages.info(request, 'Username or password is wrong! Try again...')
+            return redirect('login')
+
+    form = LoginForm()       
+    context = {'form': form}       
+    return render(request, 'login.html', context)
+
+def user_profile(request):
+    return render(request, 'profile.html')
 
 
 
