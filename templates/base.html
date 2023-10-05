@@ -12,11 +12,11 @@
 </head>
 <body class="d-flex flex-column h-100">    
    <div class="wrapper">
-         <nav class="navbar navbar-expand-lg nav-container navbar-d navbar-fixed-top sticky-top">
+         <nav class="navbar navbar-expand-xl nav-container navbar-d fixed-top">
             <div class="container-fluid">  
               <div>
-                 <a class="navbar-brand logo" href="#"><img src="{% static 'img/logo.png' %}" alt="Barbershop"></a>                           
-                 <a class="navbar-brand brand link" href="#">Barbiere Maestro</a> 
+                 <a class="navbar-brand logo" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="Barbershop"></a>                           
+                 <a class="navbar-brand brand link" href="{% url 'index' %}">Barbiere Maestro</a> 
               </div>
               <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
@@ -38,18 +38,32 @@
                     <li class="nav-item">
                        <a class="nav-link link" href="{% url 'index' %}#contact">Contact</a>
                     </li>
-                    <li class="nav-item">
-                       <a class="nav-link link" id="login" href="#">Login</a>
-                    </li>
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                           <p class="user_hello">Hello, {{ request.user.username }}!</p>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link link" id="profile" href="{% url 'user_profile' %}">Profile</a>
+                        </li> 
+                        <li class="nav-item">
+                           <a class="nav-link link" id="logout" href="{% url 'user_logout' %}">Logout</a>
+                        </li>
+                     {% else %}
+                        <li class="nav-item">
+                           <a class="nav-link link" id="login" href="{% url 'user_login' %}">Login</a>
+                        </li>
+                     {% endif %}
                  </ul>
               </div>           
            </div>
         </nav>
         <div class="container-fluid hero-container">
            <div class="row">
-              <div class="d-flex justify-content-end">           
-                 <a href="#">Sing up and Book now!</a>     
-              </div>
+            {% if not user.is_authenticated %}
+               <div class="d-flex justify-content-end">           
+                  <a href="{% url 'registration' %}">Sing up and Book now!</a>     
+               </div>
+            {% endif %}
            </div>
            <div class="row" >
               <div class="d-flex justify-content-center sl-box">
@@ -92,11 +106,18 @@
                     </ul>
                  </div>
               </div>
-              <div class="col-lg-6 col-md-auto col-xs-auto col-sm-auto">
-                 <div class="footer_content footer_sign_in centered">
-                    <a href="#">Sing up and Book now!</a>                 
-                 </div>
-              </div>
+               {% if user.is_authenticated %}
+                  <div class="col-lg-6 col-md-4">
+                     <div class="footer_content footer_sign_in centered">                                      
+                     </div>
+                  </div>
+               {% else %}
+                  <div class="col-lg-6 col-md-auto col-xs-auto col-sm-auto">
+                     <div class="footer_content footer_sign_in centered">
+                        <a href="{% url 'registration' %}">Sing up and Book now!</a>                 
+                     </div>
+                  </div>
+               {% endif %}
               <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4 menu-r ">
                  <div class="footer_content">
                     <h5>Contact</h5>

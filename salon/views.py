@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib import messages
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login
+from django.contrib.auth.models import auth
+from django.contrib.auth.decorators import login_required
 from datetime import datetime, timedelta
 from .forms import CustomerForm, LoginForm 
 from .models import Service, Barber, WorkingHours, Booking, User
@@ -12,21 +13,19 @@ from .models import Service, Barber, WorkingHours, Booking, User
 def index(request):    
    return render(request, 'index.html')
 
-def booking(request): 
-    services = Service.objects.all()  
 
+def booking(request): 
+    services = Service.objects.all()
     return render(request, 'booking.html', {'services': services }) 
           
-    
+
+@login_required     
 def save_form(request):    
     if request.method == 'POST':
-        # form = ServiceForm(request.POST)
-        # if form.is_valid():      
-        customer = User.objects.get(username='Alex')
+        customer = request.user
         service = request.POST.get('service')
         barber = request.POST.get('barber')       
-        working_days = request.POST.get('working_days')
-        print("AAA", working_days)
+        working_days = request.POST.get('working_days')      
         format = "%A, %d %B, %Y   %H:%M"
         date = datetime.strptime(working_days, format)
         
@@ -39,11 +38,13 @@ def save_form(request):
         booking.save()
     return render(request, "index.html",{})   
 
+
 def barbers(request):    
     service_id = request.GET.get("service")      
     barbers = Barber.objects.filter(services = service_id)   
     context = {'barbers': barbers, 'is_htmx': True}      
     return render(request, 'barbers.html', context )
+
 
 def working_days(request):
     barber = request.GET.get("barber")    
@@ -62,7 +63,7 @@ def working_days(request):
                     visit_times.append(visit_time)
                     next_time = next_time + timedelta(hours=1)
  
-    request.session['fav_color'] = visit_times                        
+    # request.session['fav_color'] = visit_times                        
     return render(request, 'working_days.html', {'visit_times': visit_times})
 
 
@@ -83,7 +84,7 @@ def user_registration(request):
             form.save()
             user = form.cleaned_data.get('username')
             messages.success(request, user + ', your account is created successfully!')            
-            return redirect('login')
+            return redirect('user_login')
         else: 
             messages.error(request, "Please fill out all fields")  
             context = {'form': form}
@@ -103,20 +104,22 @@ def user_login(request):
         if user is not None:
             messages.success(request, username + ', you are logged in!')  
             login(request, user)                      
-            return redirect('profile')
+            return redirect('user_profile')
         else:
             messages.info(request, 'Username or password is wrong! Try again...')
-            return redirect('login')
-
-    form = LoginForm()       
-    context = {'form': form}       
-    return render(request, 'login.html', context)
+            return redirect('user_login')
+    else:
+        form = LoginForm()       
+        context = {'form': form}       
+        return render(request, 'login.html', context)
 
 def user_profile(request):
     return render(request, 'profile.html')
 
 
-
+def user_logout(request):    
+    auth.logout(request)  
+    return redirect('index')
 
 
 

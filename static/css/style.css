@@ -108,8 +108,9 @@ hr {
     margin-right: 20px;
 }
 
-#login {
-    margin-left: 20px;
+#login, #logout, #profile  {
+    margin-left: 10px;
+    margin-top: 5px;
     background-color: #f75c37;
     color: #222227;
     font-weight: 600;   
@@ -118,12 +119,19 @@ hr {
     padding: 7px;   
 }
 
+.user_hello {
+    color: #eee; 
+    padding: 3px;
+    margin-left: 30px;
+}
+
 /* Hero image container */
 
 .hero-container {      
     background: url(../img/barbiera-hero.jpg) no-repeat center top; 
     min-height: 500px;
-    width: 100%;    
+    width: 100%;
+    margin-top: 80px;     
     padding-top: 30px;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -213,7 +221,7 @@ hr {
 
 .btn-reg:hover,
 .hero-container a:hover,
-#login:hover,
+#login:hover, #logout:hover, #profile:hover,
 .footer_sign_in a:hover  {
     background-color: #f75c37;
     color: #eee;
