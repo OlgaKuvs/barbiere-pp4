@@ -36,7 +36,7 @@ def save_form(request):
             service=Service.objects.get(id=int(service)),
             ) 
         booking.save()
-    return render(request, "index.html",{})   
+    return redirect('user_profile')
 
 
 def barbers(request):    
@@ -51,7 +51,7 @@ def working_days(request):
     working_days = WorkingHours.objects.filter(barber=barber)    
     next_week = available_weekday(8)  
    
-    visit_times = []
+    all_times = []
     for next_day in next_week:
         for work_day in working_days:       
             day_of_week = next_day.weekday()            
@@ -59,22 +59,33 @@ def working_days(request):
                 start_time = work_day.time_start                
                 next_time = datetime.combine(next_day.date(), start_time)             
                 while next_time.hour < work_day.time_end.hour:
-                    visit_time = next_time.strftime("%A, %d %B, %Y   %H:%M")                    
-                    visit_times.append(visit_time)
+                    free_time = next_time.strftime("%A, %d %B, %Y   %H:%M")                    
+                    all_times.append(free_time)
                     next_time = next_time + timedelta(hours=1)
  
-    # request.session['fav_color'] = visit_times                        
+    visit_times = checkDay(barber, all_times)                        
     return render(request, 'working_days.html', {'visit_times': visit_times})
 
 
 def available_weekday(days):
-    #Loop days you want in the next 7 days:   
+    # Loop days you want in the next 7 days   
     free_dates = []
     for i in range (0, days):
         next_day = datetime.now() + timedelta(1)
         a = next_day + timedelta(days=i) 
         free_dates.append(a)           
     return free_dates
+
+
+def checkDay(barber, all_times):
+    # Show only available days and times for exact barber 
+    dates = []
+    for day in all_times:        
+        day_time = datetime.strptime(day, "%A, %d %B, %Y  %H:%M")
+        if Booking.objects.filter(barber=barber, date=day_time).count() < 1:
+            day_time = day_time.strftime("%A, %d %B, %Y   %H:%M")
+            dates.append(day_time)
+    return dates
 
 
 def user_registration(request):    
@@ -102,7 +113,7 @@ def user_login(request):
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
         if user is not None:
-            messages.success(request, username + ', you are logged in!')  
+            messages.success(request, username + ', you are successfully logged in!')  
             login(request, user)                      
             return redirect('user_profile')
         else:
@@ -112,9 +123,12 @@ def user_login(request):
         form = LoginForm()       
         context = {'form': form}       
         return render(request, 'login.html', context)
+    
 
 def user_profile(request):
-    return render(request, 'profile.html')
+    bookings = Booking.objects.filter(customer=request.user)   
+    context = {'bookings': bookings} 
+    return render(request, 'profile.html', context)
 
 
 def user_logout(request):    

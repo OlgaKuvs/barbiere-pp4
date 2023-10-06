@@ -140,7 +140,9 @@ hr {
     position: relative;      
 }
 
-.hero-container a, .footer_sign_in a {   
+.hero-container a, 
+.footer_sign_in a,
+.btn-profile a {   
     color: #222227;  
     font-size: 20px;
     font-weight: 400;  
@@ -221,13 +223,22 @@ hr {
 
 .btn-reg:hover,
 .hero-container a:hover,
-#login:hover, #logout:hover, #profile:hover,
+#login:hover, 
+#logout:hover, 
+#profile:hover,
+.btn-profile a:hover,
 .footer_sign_in a:hover  {
     background-color: #f75c37;
     color: #eee;
     transition: 0.5s;   
     text-decoration: none;
 }
+
+.btn-profile {
+    height: 60px !important;
+    border-style: none;
+}
+
 
 /* Forms */
 
@@ -267,6 +278,38 @@ hr {
     border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
+/* Profile table */
+
+.btn-edit {    
+    color: #222227 !important; 
+    background-color: #eee !important;    
+}
+
+.btn-edit a {
+    text-decoration: none;   
+    color: #f75c37 !important;    
+}
+
+.btn-edit a:hover {
+    color: #222227 !important;
+    transition: 0.5s !important;       
+}
+
+.btn-delete { 
+    text-decoration: none;
+    color: #f75c37 !important; 
+    background-color: #9e8a78 !important;   
+}
+
+.btn-delete a { 
+    text-decoration: none;
+    color: #eee !important;    
+}
+
+.btn-delete a:hover  {
+    color: #222227 !important; 
+    transition: 0.5s !important;    
+}
 
 
 /* Footer */
@@ -315,6 +358,10 @@ hr {
     width: 250px;
     object-fit: cover;
 } 
+
+#navbarDropdown {
+    text-align: end;    
+}
 
 .w-50 {
     width: 600px !important;
