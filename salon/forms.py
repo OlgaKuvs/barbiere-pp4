@@ -8,6 +8,9 @@ from crispy_forms.layout import Submit
 from .models import Service, Barber, WorkingHours
 
 class CustomerForm(UserCreationForm):
+    username = forms.CharField(max_length=20, help_text=('Required. 20 characters or fewer. Letters, digits and @/./+/-/_ only.'))
+    email = forms.EmailField(required=True)
+
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['first_name'].required = True        

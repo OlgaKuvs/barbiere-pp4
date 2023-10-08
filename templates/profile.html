@@ -28,7 +28,7 @@
                                     <td>{{ booking.barber  }}</td>
                                     <td>{{ booking.date }}</td>
                                     <td class="btn-edit centered"><a href="#">Edit</a></td>
-                                    <td class="btn-delete centered"><a href="#">Delete</a></td>
+                                    <td class="btn-delete centered"><a href="{% url 'delete' booking.id %}">Delete</a></td>
                                 </tr>
                             {% endfor %} 
                             <tr>

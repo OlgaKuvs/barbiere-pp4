@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
@@ -88,6 +88,15 @@ def checkDay(barber, all_times):
     return dates
 
 
+def delete(request, id):
+    booking = get_object_or_404(Booking, id=id)
+    if request.method == 'POST':
+        booking.delete()
+        messages.info(request,'Your booking has been cancelled')
+        return redirect('user_profile')       
+    return render(request, 'delete.html', {'booking': booking})
+
+
 def user_registration(request):    
     if request.method == 'POST':
         form = CustomerForm(request.POST)
@@ -153,18 +162,5 @@ def user_logout(request):
 
 
     
-#Get stored data from django session:
-    # customer = "Alex"    
-    # service = request.session.get('service')
-    # barber = request.session.get('barber')
-    # working_days = request.session.get('working_days')
-    # print("vvv", service)
-    # booking_completed = Booking.objects.get_or_create(
-    #             customer = customer,
-    #             service = service,
-    #             barber = barber,
-    #             working_days = working_days,
-    #         )
-    # messages.success(request, "Booking saved!")
-    # return redirect('booking')
+
        
