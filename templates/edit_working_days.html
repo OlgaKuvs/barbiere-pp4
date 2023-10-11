@@ -1,0 +1,26 @@
+<label for="wd">Dates and times</label>
+<select id="wd" name="working_days" title="visit_time" class="form-select form-select-sm mb-3" onchange="stateHandle2()">
+    <option selected>{{ new_date  }}</option>
+    {% for visit_time in visit_times %} 
+        <option value='{{ visit_time }}'>{{ visit_time }} </option>  
+    {% endfor %}
+</select>
+
+<script type="text/javascript">
+    function stateHandle2() {
+        A = document.getElementById("service");
+        B= document.getElementById("barber")
+        U= document.getElementById("wd")
+        console.log("AAA",  A.selectedIndex)
+        console.log("BBB", B.selectedIndex)
+        console.log("UUU", U.selectedIndex)
+
+        if(B.selectedIndex > 0 && U.selectedIndex > 0 && A.selectedIndex > 0  )  {
+            console.log("ddd");  
+            button.disabled = false; 
+        } 
+        else {
+            button.disabled = true;
+        }
+    }
+</script>

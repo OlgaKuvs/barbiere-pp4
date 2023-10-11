@@ -27,12 +27,12 @@
                                     <td> {{ booking.service }}</td>
                                     <td>{{ booking.barber  }}</td>
                                     <td>{{ booking.date }}</td>
-                                    <td class="btn-edit centered"><a href="#">Edit</a></td>
-                                    <td class="btn-delete centered"><a href="{% url 'delete' booking.id %}">Delete</a></td>
+                                    <td class="btn-edit centered"><a href="{% url 'edit_booking' booking.id %}">Edit</a></td>
+                                    <td class="btn-delete centered"><a href="{% url 'delete_booking' booking.id %}">Delete</a></td>
                                 </tr>
                             {% endfor %} 
                             <tr>
-                                <td colspan="5" class="btn-profile align-bottom centered">
+                                <td colspan="5" class="btn-profile align-middle centered">
                                     <a href="{% url 'booking' %}">Book an appointment</a>
                                 </td>
                             </tr>                   

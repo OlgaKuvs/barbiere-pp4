@@ -280,6 +280,10 @@ hr {
 
 /* Profile table */
 
+.table {
+    margin-bottom: 0;
+}
+
 .btn-edit {    
     color: #222227 !important; 
     background-color: #eee !important;    

@@ -88,14 +88,39 @@ def checkDay(barber, all_times):
     return dates
 
 
-def delete(request, id):
+def delete_booking(request, id):
     booking = get_object_or_404(Booking, id=id)
     if request.method == 'POST':
         booking.delete()
         messages.info(request,'Your booking has been cancelled')
         return redirect('user_profile')       
-    return render(request, 'delete.html', {'booking': booking})
+    return render(request, 'delete_booking.html', {'booking': booking})
 
+
+def edit_booking(request, id):
+    if request.method == 'POST':
+        customer = request.user
+        service = request.POST.get('service')
+        barber = request.POST.get('barber')       
+        working_days = request.POST.get('working_days')      
+        format = "%A, %d %B, %Y   %H:%M"
+        date = datetime.strptime(working_days, format)
+        booking = Booking.objects.filter(id=id).update( 
+            customer=customer, 
+            barber=Barber.objects.get(id=int(barber)),
+            date=date, 
+            service=Service.objects.get(id=int(service)),
+            )
+        return redirect('user_profile')
+    else:    
+        booking = get_object_or_404(Booking, id=id)
+        services = Service.objects.all()
+        new_date = booking.date.strftime("%A, %d %B, %Y   %H:%M")
+        context = {'services': services,
+                'booking': booking,
+                'new_date': new_date }
+        return render(request, 'edit_booking.html', context) 
+    
 
 def user_registration(request):    
     if request.method == 'POST':
