@@ -36,8 +36,8 @@
                             <div id="working_days" class="my-4">
                                 {% include 'edit_working_days.html' %}
                             </div>
-                        <button class="btn btn-primary" type="submit" id="submit">Change</button>
-                        <a class="btn btn-secondary" href="{% url 'user_profile' %}">Cancel</a>
+                        <button class="btn btn-book" type="submit" id="submit">Change</button>
+                        <a class="btn btn-cancel" href="{% url 'user_profile' %}">Cancel</a>
                        
                     </form>
                 </div>                
@@ -45,6 +45,6 @@
         </div>
     </div>
 </div>
-
+<script type="text/javascript" src="{% static 'js/button_enable.js' %}"></script>
 
 {% endblock content %}

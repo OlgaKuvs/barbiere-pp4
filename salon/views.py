@@ -160,7 +160,7 @@ def user_login(request):
     
 
 def user_profile(request):
-    bookings = Booking.objects.filter(customer=request.user)   
+    bookings = Booking.objects.filter(customer=request.user).order_by('date')   
     context = {'bookings': bookings} 
     return render(request, 'profile.html', context)
 
