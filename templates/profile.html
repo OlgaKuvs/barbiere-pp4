@@ -9,28 +9,35 @@
     <div class="row justify-content-center">
         <div class="col-lg-7">
             <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
-                <div class="card-header"><h3 class="centered">Manage your appointments</h3>
-                </div> 
-                    <table class="table table table-striped">
-                        <thead>
-                        <tr>
-                            <th scope="col">Service</th>
-                            <th scope="col">Barber</th>
-                            <th scope="col">Date and time</th>
-                            <th scope="col"></th> 
-                            <th scope="col"></th>                     
-                        </tr>
-                        </thead>
-                        <tbody>
-                            {% for booking in bookings %}
+                {% if bookings %}
+                    <div class="card-header"><h3 class="centered">Manage your appointments</h3>
+                    </div> 
+                        <table class="table table table-striped">
+                            <thead>
                                 <tr>
-                                    <td> {{ booking.service }}</td>
-                                    <td>{{ booking.barber  }}</td>
-                                    <td>{{ booking.date }}</td>
-                                    <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Edit</button></a></td>
-                                    <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
+                                    <th scope="col">Service</th>
+                                    <th scope="col">Barber</th>
+                                    <th scope="col">Date and time</th>
+                                    <th scope="col"></th> 
+                                    <th scope="col"></th>                     
                                 </tr>
-                            {% endfor %} 
+                                </thead>
+                                <tbody>                            
+                                {% for booking in bookings %}
+                                    <tr>
+                                        <td> {{ booking.service }}</td>
+                                        <td>{{ booking.barber  }}</td>
+                                        <td>{{ booking.date }}</td>
+                                        <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Edit</button></a></td>
+                                        <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
+                                    </tr>
+                                {% endfor %} 
+                {% else %}
+                        <div class="card-header"><h3 class="centered">You have no appointments yet</h3>
+                        </div> 
+                            <table class="table table table-striped">
+                                <thead>                                   
+                {% endif %}
                             <tr>
                                 <td colspan="5" class="btn-profile align-middle centered">
                                     <a href="{% url 'booking' %}">Book an appointment</a>

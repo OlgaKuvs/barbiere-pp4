@@ -104,13 +104,14 @@ def edit_booking(request, id):
         barber = request.POST.get('barber')       
         working_days = request.POST.get('working_days')      
         format = "%A, %d %B, %Y   %H:%M"
-        date = datetime.strptime(working_days, format)
+        date = datetime.strptime(working_days, format)        
         booking = Booking.objects.filter(id=id).update( 
             customer=customer, 
             barber=Barber.objects.get(id=int(barber)),
             date=date, 
             service=Service.objects.get(id=int(service)),
             )
+        messages.success(request, str(customer) + ', your appointment was successfully changed!')          
         return redirect('user_profile')
     else:    
         booking = get_object_or_404(Booking, id=id)
@@ -160,7 +161,7 @@ def user_login(request):
     
 
 def user_profile(request):
-    bookings = Booking.objects.filter(customer=request.user).order_by('date')   
+    bookings = Booking.objects.filter(customer=request.user).order_by('date')
     context = {'bookings': bookings} 
     return render(request, 'profile.html', context)
 

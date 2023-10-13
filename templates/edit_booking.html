@@ -9,23 +9,46 @@
     <div class="row justify-content-center">
         <div class="col-lg-7"> 
             <div class="card shadow-lg border-0 rounded-lg mt-5">
-                <div class="card-header"><h3 class="centered">Your appointment: </h3>
-                    <p>Service: {{ booking.service }} </p>
-                    <p>Barber: {{ booking.barber}} </p>
-                    <p>Date and time: {{ new_date }} </p>
+                <div class="card-header centered"><h3 class="centered">Your appointment: </h3>
+                    <p><h6>Service:</h6> {{ booking.service }} </p><p><h6>Barber:</h6> {{ booking.barber }}</p><p><h6>Date and time:</h6> {{ booking.date }} </p>
                     <h3 class="centered">Would you like to change it?</h3>
-                </div> 
+                </div>
                 <div class="card-body min-vh-100">
                     <form action="{% url 'edit_booking' booking.id %}" method="POST">
+                        {% csrf_token %}
+                        <label for="service">Services</label>
+                        <select id='edit_service' name="service" title="services" class="form-select form-select-sm mb-3"
+                            hx-get="{% url 'barbers' %}"
+                            hx-trigger="change"
+                            hx-target="#edit_barbers">
+                            <option selected disabled>Choose the service</option>
+                            {% for service in services %}
+                            <option value="{{ service.id}}">{{ service.name }}</option>
+                            {% endfor %}
+                        </select>
+
+                        <div id="edit_barbers" class="my-4">
+                            {% include 'edit_barbers.html' %}
+                        </div>
+
+                        <div id="edit_working_days" class="my-4">
+                            {% include 'edit_working_days.html' %}
+                        </div>
+                        <button class="btn btn-book" type="submit" id="change">Change</button>
+                        <a class="btn btn-cancel" href="{% url 'user_profile' %}">Cancel</a>
+                    </form>                    
                         {% csrf_token %}
                             <label for="service">Services</label>
                             <select id='service' name="service" title="services" class="form-select form-select-sm mb-3"
                                 hx-get="{% url 'barbers' %}"
                                 hx-trigger="change"
-                                hx-target="#barbers">
-                                <option selected>{{ booking.service }}</option>
-                                {% for service in services %}
-                                <option value="{{ service.id}}">{{ service.name }}</option>
+                                hx-target="#barbers">                               
+                                {% for service in services %}                                
+                                    {% if booking.service.id == service.id %}                                    
+                                        <option selected value="{{ service.id }}">{{ booking.service }}</option>
+                                    {% else %}                                    
+                                        <option value="{{ service.id }}">{{ service.name }}</option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
 
@@ -39,7 +62,7 @@
                         <button class="btn btn-book" type="submit" id="submit">Change</button>
                         <a class="btn btn-cancel" href="{% url 'user_profile' %}">Cancel</a>
                        
-                    </form>
+                    </form> -->
                 </div>                
             </div>
         </div>
