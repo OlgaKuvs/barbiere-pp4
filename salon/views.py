@@ -111,7 +111,7 @@ def edit_booking(request, id):
             date=date, 
             service=Service.objects.get(id=int(service)),
             )
-        messages.success(request, str(customer) + ', your appointment was successfully changed!')          
+        messages.success(request, str(customer) + ', your appointment is changed!')          
         return redirect('user_profile')
     else:    
         booking = get_object_or_404(Booking, id=id)

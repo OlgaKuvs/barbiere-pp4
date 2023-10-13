@@ -8,19 +8,20 @@
 
 <script type="text/javascript">
     function stateHandle2() {
-        A = document.getElementById("service");
-        B= document.getElementById("barber")
-        U= document.getElementById("wd")
-        console.log("AAA",  A.selectedIndex)
-        console.log("BBB", B.selectedIndex)
-        console.log("UUU", U.selectedIndex)
+        // A = document.getElementById("service");
+        // B= document.getElementById("barber")
+        working_days = document.getElementById("wd")
+        // console.log("AAA",  A.selectedIndex)
+        // console.log("BBB", B.selectedIndex)
+        // console.log("UUU", U.selectedIndex)
 
-        if(B.selectedIndex > 0 && U.selectedIndex > 0 && A.selectedIndex > 0  )  {
-            console.log("ddd");  
+        if(working_days.selectedIndex > 0)  {
+            // console.log("ddd");  
             button.disabled = false; 
         } 
-        else {
-            button.disabled = true;
-        }
+        // else {
+        //     button.disabled = true;
+        // }
     }
+     
 </script>

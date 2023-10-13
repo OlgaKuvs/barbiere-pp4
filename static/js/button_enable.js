@@ -10,18 +10,20 @@
 
     function stateHandle() {
         service = document.getElementById("service");
+        service[0].innerText = "Choose the service"
         barber = document.getElementById("barber");
         working_days = document.getElementById("working_days");
         barber.selectedIndex = 0;
-        working_days.selectedIndex = 0; 
+        working_days.selectedIndex = 0;
+        button.disabled = true;      
 
-        if(service.selectedIndex > 0 && barber.selectedIndex > 0 
-            && working_days.selectedIndex > 0 )  {            
-            button.disabled = false; 
-        } 
-        else {
-            button.disabled = true;
-        }
+        // if(service.selectedIndex > 0 && barber.selectedIndex > 0 
+        //     && working_days.selectedIndex > 0 )  {            
+        //     button.disabled = false; 
+        // } 
+        // else {
+        //     button.disabled = true;
+        // }
     }
 
     
