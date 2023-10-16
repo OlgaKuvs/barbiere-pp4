@@ -34,7 +34,8 @@ def save_form(request):
             barber=Barber.objects.get(id=int(barber)),
             date=date, 
             service=Service.objects.get(id=int(service)),
-            ) 
+            )
+        messages.info(request,'Your booking has been created.') 
         booking.save()
     return redirect('user_profile')
 
@@ -92,7 +93,7 @@ def delete_booking(request, id):
     booking = get_object_or_404(Booking, id=id)
     if request.method == 'POST':
         booking.delete()
-        messages.info(request,'Your booking has been cancelled')
+        messages.info(request,'Your booking has been cancelled.')
         return redirect('user_profile')       
     return render(request, 'delete_booking.html', {'booking': booking})
 

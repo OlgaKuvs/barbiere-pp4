@@ -16,7 +16,7 @@ class CustomerForm(UserCreationForm):
         self.fields['first_name'].required = True        
         self.helper = FormHelper(self)
         self.helper.add_input(Submit('submit', 'Submit'))
-        self.helper.form_action = reverse_lazy('registration')        
+        # self.helper.form_action = reverse_lazy('registration')        
         
     class Meta:
         model = User

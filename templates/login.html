@@ -14,8 +14,7 @@
                 <div class="card-body">
 
                     {% csrf_token %}
-                    {{ form|as_crispy_errors }}
-
+                    <!-- {{ form|as_crispy_errors }} -->
                     {% crispy form %} 
                     
                 </div>
