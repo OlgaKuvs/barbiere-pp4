@@ -128,7 +128,7 @@ hr {
 /* Hero image container */
 
 .hero-container {      
-    background: url('/static/img/barbiera-hero.jpg') no-repeat center top; 
+    background: url("https://res.cloudinary.com/dlcmr6krf/image/upload/v1697479165/static/img/barbiera-hero.7c75cc9e51d2.jpg") no-repeat center top; 
     min-height: 500px;
     width: 100%;
     margin-top: 80px;     
@@ -359,7 +359,8 @@ hr {
 /* Footer */
 
 .footer {
-    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('/static/img/barbiera-footer.jpg') no-repeat center top;     
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), 
+                url("https://res.cloudinary.com/dlcmr6krf/image/upload/v1697479173/static/img/barbiera-footer.ee8587278b90.jpg") no-repeat center top;     
     min-height: 300px;
     background-size: cover;   
     width: 100%;     
