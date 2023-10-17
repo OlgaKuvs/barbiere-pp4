@@ -128,7 +128,7 @@ hr {
 /* Hero image container */
 
 .hero-container {      
-    background: url(../img/barbiera-hero.jpg) no-repeat center top; 
+    background: url('/static/img/barbiera-hero.jpg') no-repeat center top; 
     min-height: 500px;
     width: 100%;
     margin-top: 80px;     
@@ -359,10 +359,9 @@ hr {
 /* Footer */
 
 .footer {
-    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url(../img/barbiera-footer.jpg) no-repeat center top; 
+    background: linear-gradient(rgba(0,0,0,0.7),rgba(0,0,0,0.7)), url('/static/img/barbiera-footer.jpg') no-repeat center top;     
     min-height: 300px;
-    background-size: cover;
-    /* position: fixed;  */
+    background-size: cover;   
     width: 100%;     
     bottom: 0;     
     justify-content: space-between;    
