@@ -49,8 +49,7 @@ p {
 hr {
     width: 50%;
     margin: 0 auto;     
-    border-top: 1px solid #f75c37;
-    /*margin: 1em 0; */
+    border-top: 1px solid #f75c37; 
     padding-bottom: 15px;    
 }
 
@@ -178,7 +177,13 @@ hr {
 
 .icons {
     width: 35px; 
-    height: 35px;   
+    height: 35px;
+    margin: 10px;   
+}
+
+.service_description {
+    padding: 0 15px;
+    margin-bottom: 30px;
 }
 
 
@@ -206,6 +211,8 @@ hr {
     background-color:#e6e6e6;   
     padding-bottom: 30px;                
 }
+
+
 
 /* Buttons */
 

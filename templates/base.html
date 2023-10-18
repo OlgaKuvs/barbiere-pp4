@@ -28,16 +28,20 @@
                        <a class="nav-link link choosen" aria-current="page" href="{% url 'index' %}">Home</a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link link" href="{% url 'index' %}#our_services">Services</a>
+                       <a class="nav-link link" href="{% url 'index' %}#our_services">
+                        <span data-bs-target="#navbarDropdown" data-bs-toggle="collapse">Services</span></a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link link" href="{% url 'index' %}#our_staff">Our staff</a>
+                       <a class="nav-link link" href="{% url 'index' %}#our_staff">
+                        <span data-bs-target="#navbarDropdown" data-bs-toggle="collapse">Our staff</span></a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link link" href="{% url 'index' %}#gallery">Gallery</a>
+                       <a class="nav-link link" href="{% url 'index' %}#gallery">
+                       <span data-bs-target="#navbarDropdown" data-bs-toggle="collapse">Gallery</span></a>
                     </li>
                     <li class="nav-item">
-                       <a class="nav-link link" href="{% url 'index' %}#contact">Contact</a>
+                       <a class="nav-link link" href="{% url 'index' %}#contact">
+                       <span data-bs-target="#navbarDropdown" data-bs-toggle="collapse">Contact</span></a>
                     </li>
                     {% if user.is_authenticated %}
                         <li class="nav-item">

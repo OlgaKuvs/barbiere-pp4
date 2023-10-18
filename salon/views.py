@@ -11,7 +11,10 @@ from .models import Service, Barber, WorkingHours, Booking, User
 # Create your views here.
 
 def index(request):    
-   return render(request, 'index.html')
+    services = Service.objects.all()
+    barbers = Barber.objects.all() 
+    context = {'services': services, 'barbers': barbers}    
+    return render(request, 'index.html', context)
 
 
 def booking(request): 

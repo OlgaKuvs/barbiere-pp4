@@ -23,7 +23,27 @@
     </div>
  </div>
  <div class="container my-2 services" id="our_services">
-    <div class="row centered">
+   <div class="row centered">
+      <h3>Our services</h3>
+      <div class="col-lg-12">
+         <hr>
+      </div>
+   </div>
+   <div class="row centered">
+     {% for service in services %}
+      <div class="col-lg-4">
+        <img class="icons" src="{{ service.image.url }}" alt="tool{{ service.id }}">
+         <!-- <img class="icons" src="{% static 'img/tool1.png' %}" alt="tool1"></img> -->
+         <h4>{{ service.name }}</h4>          
+         <p class="service_description">{{ service.description}} <br><i>Price: € {{ service.price }}</i></p>
+         
+         <!-- <p>Experience the artistry of a short hair haircut, where our expert barbers craft clean lines and sharp styles to keep you looking your best.</p> -->
+      </div> 
+     {% endfor %}      
+   </div>
+</div>
+
+    <!-- <div class="row centered">
        <h3>Our services</h3>
        <div class="col-lg-12">
           <hr>
@@ -64,7 +84,7 @@
           <p>Rejuvenate your hair with our invigorating hair wash and styling, where we use premium products to create the perfect look for you.</p>
        </div>
     </div>
- </div>
+ </div> -->
  <div class="container my-2" id="our_staff">
     <div class="row centered">
        <h3>Our staff</h3>
@@ -74,7 +94,7 @@
        <div class="col-lg-4 d-flex">
           <div class="card">
              <div class="staff">
-                <img src="{% static 'img/barber1.jpg ' %}" class="card-img-top" alt="Barber Crhis">
+                <img src="{% static 'img/barber1.jpg ' %}" class="card-img-top" alt="Barber Chris">
              </div>
              <div class="card-body flex-fill d-flex flex-column">
                <h5 class="card-title">Chris</h5>

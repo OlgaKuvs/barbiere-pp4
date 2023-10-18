@@ -9,6 +9,8 @@ class Service(models.Model):
     # Service model for storing barber services data.
     name = models.CharField(max_length=200, unique=True)    
     price = models.DecimalField(max_digits=5, decimal_places=2)
+    description = models.TextField(default='')
+    image = CloudinaryField("image", default='')
 
     def __str__(self):
         return self.name
@@ -18,6 +20,8 @@ class Barber(models.Model):
     # Barber model for storing barber data.
     name = models.CharField(max_length=50, unique=True)
     services = models.ManyToManyField(Service, related_name ='services')
+    description = models.TextField(default='')
+    image = CloudinaryField("image", default='')
     is_available = models.BooleanField(
         default=True, 
         null=False, 
