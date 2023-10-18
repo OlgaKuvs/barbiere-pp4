@@ -91,10 +91,29 @@
        <div class="col-lg-12">
           <hr>
        </div>
-       <div class="col-lg-4 d-flex">
-          <div class="card">
-             <div class="staff">
-                <img src="{% static 'img/barber1.jpg ' %}" class="card-img-top" alt="Barber Chris">
+       {% for barber in barbers %}
+         <div class="col-lg-4 d-flex">
+            <div class="card">
+               <div class="staff">
+                  <img src="{{ barber.image.url }}" class="card-img-top" alt="Barber {{ barber.id }}">
+               </div>
+               <div class="card-body flex-fill d-flex flex-column">
+                  <h5 class="card-title">{{ barber.name }}</h5>
+                  {% autoescape off %}
+                     {{ barber.description }}
+                  {% endautoescape %}
+                  <p class="card-text mt-auto">
+                     <a href="{% url 'booking' %}" class="btn btn-reg">Book now</a>
+                  </p>
+               </div>            
+            </div>
+         </div>
+      {% endfor %}
+   </div>
+</div>
+
+
+                <!-- <img src="{% static 'img/barber1.jpg ' %}" class="card-img-top" alt="Barber Chris">
              </div>
              <div class="card-body flex-fill d-flex flex-column">
                <h5 class="card-title">Chris</h5>
@@ -134,7 +153,7 @@
                </p>
              </div>
           </div>
-       </div>
+       </div> 
        <div class="col-lg-4 d-flex">
           <div class="card">
              <div class="staff"> 
@@ -156,7 +175,8 @@
           </div>
        </div>
     </div>
- </div>
+ </div>-->
+
  <div class="container my-2 gallery_wrapper" id="gallery">
     <div class="row centered d-flex justify-content-between">
        <h3>Gallery</h3>
@@ -178,6 +198,20 @@
           <img class="rounded-3" src="{% static 'img/haircut4.jpg' %}" alt="haircut4">
        </div>
     </div>
+    <div class="row centered d-flex justify-content-between">
+      <div class="col-xl-3 col-lg-6 gallery">
+         <img class="rounded-3" src="{% static 'img/haircut5.jpg' %}" alt="haircut5">
+      </div>
+      <div class="col-xl-3 col-lg-6 gallery">
+         <img class="rounded-3" src="{% static 'img/haircut6.jpg' %}" alt="haircut6">
+      </div>
+      <div class="col-xl-3 col-lg-6 gallery">
+         <img class="rounded-3" src="{% static 'img/haircut7.jpg' %}" alt="haircut7">
+      </div>
+      <div class="col-xl-3 col-lg-6 gallery">
+         <img class="rounded-3" src="{% static 'img/haircut8.jpg' %}" alt="haircut8">
+      </div>
+   </div>
  </div>
 
 

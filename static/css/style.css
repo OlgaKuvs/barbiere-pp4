@@ -212,7 +212,13 @@ hr {
     padding-bottom: 30px;                
 }
 
+/* Anchors */
 
+#our_services,
+#our_staff,
+#gallery {
+    scroll-margin-top: 100px;
+}
 
 /* Buttons */
 
