@@ -425,9 +425,45 @@ hr {
 }
 
 
-/* Media  */
+/* Media Queries */
+
+
+
 @media only screen and (max-width: 600px) {   
     .form-container {
         width: 100% !important;
     }
   }
+
+  @media only screen and (max-width: 768px) {  
+    .hero-container { 
+        min-height: 150px;        
+    }
+
+    .sl-box {
+        height: 90px;
+        letter-spacing: 3px;
+    }
+   
+    #slogan {  
+        font-size: 30px;
+    }
+
+    h1 {
+        font-size: 30px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    .hero-container a, 
+    .footer_sign_in a,
+    .btn-profile a,
+    .btn-reg { 
+        font-size: 15px;    
+        border-radius: 20px;
+        margin-right: 10px;
+        padding: 7px;   
+    }
+}
