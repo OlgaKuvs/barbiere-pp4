@@ -45,7 +45,7 @@ def save_form(request):
 
 def barbers(request):    
     service_id = request.GET.get("service")      
-    barbers = Barber.objects.filter(services = service_id)   
+    barbers = Barber.objects.filter(services = service_id, is_available = True)   
     context = {'barbers': barbers, 'is_htmx': True}      
     return render(request, 'barbers.html', context )
 
