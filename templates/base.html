@@ -106,7 +106,7 @@
      <div class="footer" id="contact">
         <div class="container">
            <div class="row">
-              <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4">
+              <div class="col-lg-3 col-md-4 col-sm-12">
                  <div class="footer_content">
                     <h5>Opening Hours</h5>
                     <ul>
@@ -117,18 +117,18 @@
                  </div>
               </div>
                {% if user.is_authenticated %}
-                  <div class="col-lg-6 col-md-4">
+                  <div class="col-lg-6 col-md-5 col-sm-auto">
                      <div class="footer_content footer_sign_in centered">                                      
                      </div>
                   </div>
                {% else %}
-                  <div class="col-lg-6 col-md-auto col-xs-auto col-sm-auto">
+                  <div class="col-lg-6 col-md-5 col-sm-12">
                      <div class="footer_content footer_sign_in centered">
                         <a href="{% url 'registration' %}">Sing up and Book now!</a>                 
                      </div>
                   </div>
                {% endif %}
-              <div class="col-lg-3 col-md-4 col-xs-4 col-sm-4 menu-r ">
+              <div class="col-lg-3 col-md-3 col-sm-12 menu-r">
                  <div class="footer_content">
                     <h5>Contact</h5>
                     <ul>
