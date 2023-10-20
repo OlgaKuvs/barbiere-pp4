@@ -103,8 +103,7 @@ hr {
 }
 
 .menu {
-    float: right;
-    margin-right: 20px;
+    float: right;    
 }
 
 #login, #logout, #profile  {
@@ -433,10 +432,6 @@ hr {
 
 @media only screen and (max-width: 320px) {   
 
-    .table {
-        font-size: 12px !important;
-    }
-
     .td_buttons {
         padding: 2px !important;       
     } 
@@ -450,7 +445,7 @@ hr {
     }
 
     .table {
-        font-size: 14px !important;
+        font-size: 12px !important;
     }
 
     .brand {
@@ -463,11 +458,11 @@ hr {
 
    .ms-auto {
         margin-right: 5px !important;
-   }hero-container a
+   }
 
    .nav-r {
         padding-right: 0;
-    }
+    }   
 
     .btn-table {
         padding: 5px;        
@@ -499,10 +494,6 @@ hr {
     .footer_content > ul > li {
         font-size: 12px;
     }
-
-    /* .menu-r {
-        justify-content: start;  
-    } */
 
     .sl-box {
         height: 90px;
