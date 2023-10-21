@@ -28,7 +28,7 @@
                                         <td> {{ booking.service }}</td>
                                         <td>{{ booking.barber  }}</td>
                                         <td>{{ booking.date }}</td>
-                                        <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Edit</button></a></td>
+                                        <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Update</button></a></td>
                                         <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
                                     </tr>
                                 {% endfor %} 
