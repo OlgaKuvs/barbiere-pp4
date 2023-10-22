@@ -10,20 +10,32 @@ from .models import Service, Barber, WorkingHours, Booking, User
 
 # Create your views here.
 
-def index(request):    
+def index(request): 
+    """
+    Renders the home page. Get all services and barbers
+    from the database to show on home page. 
+    """   
     services = Service.objects.all()
     barbers = Barber.objects.all() 
     context = {'services': services, 'barbers': barbers}    
     return render(request, 'index.html', context)
 
 
-def booking(request): 
+def booking(request):
+    """
+    Renders the booking page. Get all services from the database. 
+    Returns rendered booking page. 
+    """   
     services = Service.objects.all()
     return render(request, 'booking.html', {'services': services }) 
           
 
 @login_required     
-def save_form(request):    
+def save_form(request): 
+    """ 
+    Saves booking data to the database.
+    Redirects to user profile page.
+    """     
     if request.method == 'POST':
         customer = request.user
         service = request.POST.get('service')
@@ -43,7 +55,10 @@ def save_form(request):
     return redirect('user_profile')
 
 
-def barbers(request):    
+def barbers(request):
+    """ 
+    Handles htmx requests to load barbers list to booking page.
+    """   
     service_id = request.GET.get("service")      
     barbers = Barber.objects.filter(services = service_id, is_available = True)   
     context = {'barbers': barbers, 'is_htmx': True}      
@@ -51,28 +66,34 @@ def barbers(request):
 
 
 def working_days(request):
+    """ 
+    Handles htmx requests to load time slots to booking page.
+    """  
     barber = request.GET.get("barber")    
     working_days = WorkingHours.objects.filter(barber=barber)    
     next_week = available_weekday(8)  
    
+   # Gets list of time slots for next 7 days
     all_times = []
     for next_day in next_week:
         for work_day in working_days:       
             day_of_week = next_day.weekday()            
             if work_day.day_of_week == day_of_week:                
-                start_time = work_day.time_start                
+                start_time = work_day.time_start
                 next_time = datetime.combine(next_day.date(), start_time)             
                 while next_time.hour < work_day.time_end.hour:
                     free_time = next_time.strftime("%A, %d %B, %Y   %H:%M")                    
                     all_times.append(free_time)
                     next_time = next_time + timedelta(hours=1)
- 
+    
     visit_times = checkDay(barber, all_times)                        
     return render(request, 'working_days.html', {'visit_times': visit_times})
 
 
 def available_weekday(days):
-    # Loop days you want in the next 7 days   
+    """
+    Loop days you want in the next 7 days
+    """   
     free_dates = []
     for i in range (0, days):
         next_day = datetime.now() + timedelta(1)
@@ -82,7 +103,9 @@ def available_weekday(days):
 
 
 def checkDay(barber, all_times):
-    # Show only available days and times for exact barber 
+    """
+    Gets available days and times for given barber 
+    """
     dates = []
     for day in all_times:        
         day_time = datetime.strptime(day, "%A, %d %B, %Y  %H:%M")
@@ -93,6 +116,9 @@ def checkDay(barber, all_times):
 
 
 def delete_booking(request, id):
+    """
+    Cancel given booking. 
+    """
     booking = get_object_or_404(Booking, id=id)
     if request.method == 'POST':
         booking.delete()
@@ -102,6 +128,11 @@ def delete_booking(request, id):
 
 
 def edit_booking(request, id):
+    """
+    GET: renders edit_booking page for given booking.
+    POST: saves edited appointment for given user and 
+    returns profile page with updated bookings info.
+    """
     if request.method == 'POST':
         customer = request.user
         service = request.POST.get('service')
@@ -127,7 +158,12 @@ def edit_booking(request, id):
         return render(request, 'edit_booking.html', context) 
     
 
-def user_registration(request):    
+def user_registration(request): 
+    """
+    Registers the user.
+    GET: Renders registration page.
+    POST: Registers user and redirects to user login page.
+    """   
     if request.method == 'POST':
         form = CustomerForm(request.POST)
         if form.is_valid():
@@ -145,7 +181,12 @@ def user_registration(request):
     return render(request, 'registration.html', context)
 
 
-def user_login(request):    
+def user_login(request): 
+    """
+    Logs in the user.
+    GET: Renders login page.
+    POST: Logs in user and redirects to profile page.
+    """  
     if request.method == 'POST':
         form = LoginForm(request.POST)
         username = request.POST.get('username')
@@ -165,12 +206,18 @@ def user_login(request):
     
 
 def user_profile(request):
+    """
+    Renders user profile page with a list of bookings.
+    """ 
     bookings = Booking.objects.filter(customer=request.user).order_by('date')
     context = {'bookings': bookings} 
     return render(request, 'profile.html', context)
 
 
-def user_logout(request):    
+def user_logout(request):
+    """
+    Logs out the user and redirects to home page.
+    """    
     auth.logout(request)  
     return redirect('index')
 

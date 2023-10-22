@@ -100,6 +100,8 @@ hr {
 
 .logo {
     margin-left: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 .menu {
@@ -209,6 +211,11 @@ hr {
 .gallery_wrapper {
     background-color:#e6e6e6;   
     padding-bottom: 30px;                
+}
+
+.gallery_img {
+    width: 250px;
+    height: 300px;
 }
 
 /* Anchors */

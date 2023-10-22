@@ -6,7 +6,7 @@ DAYS = ((0, 'Monday'), (1, 'Tuesday'), (2, 'Wednesday'), (3, 'Thursday'), (4, 'F
 
 
 class Service(models.Model):
-    # Service model for storing barber services data.
+    # Service model for storing services data.
     name = models.CharField(max_length=200, unique=True)    
     price = models.DecimalField(max_digits=5, decimal_places=2)
     description = models.TextField(default='')
@@ -32,7 +32,7 @@ class Barber(models.Model):
     
 
 class WorkingHours(models.Model):
-    # WorkingHours model for storing barber's working days and hours
+    # WorkingHours model for storing barber's working weekdays and hours
     barber = models.ForeignKey(Barber, on_delete=models.CASCADE, related_name='barbers')
     day_of_week = models.IntegerField(choices=DAYS, default=0)     
     time_start = models.TimeField(

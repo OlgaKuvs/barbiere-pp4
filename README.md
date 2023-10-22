@@ -9,7 +9,7 @@
 
 ## <div id="ux">UX</div>
 ### Overview
-Barbiere Maestro is a website for a modern barbershop salon. The main goal is to create a simple and intuitive website based on a deep understanding of the target users. Users of the site can obtain detailed information about the services provided, about the experience of each barber, and also look at examples of barber's haircuts in photos to decide whether they want to use the services of this salon.
+Barbiere Maestro is a website for a modern barbershop salon. The main goal is to create a simple and intuitive website based on a deep understanding of the target users. The landing page provides all the key information a potential customer needs to know, including services and pricing. The Gallery introduces visitors to available options and helps improve the customer experience. Users of the site can obtain detailed information about the services provided, about the experience of each barber, and also look at examples of barber's haircuts in photo gallery to decide whether they want to use the services of this salon.
 
 #### First Time User
 - As a person who lives near a barbershop and looking for good barber service.
@@ -88,11 +88,12 @@ The following User stories were not completed (marked as `Could have` in MoSCoW 
 
 | Test |  Result |          
 | ------------------ | ------------- |
-| User can create account. | User is redirected to the registration page by clicking `Sign up and Book now!` on the homepage. Also user can access registration page from login page. They will be asked to register if they don't already have an account. The registration form has error handling built in so the user must make the correct inputs. If inputs are incorrect the user is shown a message about incorrect data entry. |
-| User can log in. | User is redirected to the login page by clicking `Login` button. Also user can access login page from registration page. They will be asked to log in if they have an account. If the username or password is incorrect,  the message `Username or password is wrong! Try again...` is displayed to the user. |
-| Logged in user can make a booking. | Logged in user can access booking page from `Our staff` part of landing page by clicking `Book now` button, and also from user profile page by clicking  `Book an appointment`. Then user is redirected to the booking page. On the booking page, the user can fill out a form by selecting services from the list, barbers from the list, choose the date and time of the appointment, and then click `Book` button. User can make a booking when all fields complete. User is redirected to the profile page to view the list of their appointments. | 
+| User can create account. | User is redirected to the registration page by clicking `Sign up and Book now!` on the homepage. Also user can access registration page from login page. They will be asked to register if they don't already have an account. The registration form has error handling built in so the user must make the correct inputs. If inputs are incorrect the user is shown a message about incorrect data entry. If registration is successful, a message `Your account is created successfully` is displayed to the user. |
+| User can log in. | User is redirected to the login page by clicking `Login` button. Also user can access login page from registration page. They will be asked to log in if they have an account. After authorization the message `You are successfully logged in` is displayed. If the username or password is incorrect, the message `Username or password is wrong! Try again...` is displayed to the user. |
+| Logged in user can make a booking. | Logged in user can access booking page from `Our staff` part of landing page by clicking `Book now` button, and also from user profile page by clicking  `Book an appointment`. Then user is redirected to the booking page. On the booking page, the user can fill out a form by selecting services from the list, barbers from the list, choose the date and time of the appointment, and then click `Book` button. User can make a booking only after the values ​​in all dropdown lists have been selected. User is redirected to the profile page to view the list of their appointments. |
+| Autoreset booking form fields. | On changing the selected value of `Services` field, the values ​​of `Barbers` and `Dates and times` fields are automatically reset. On changing the selected value of `Barbers` field, the value ​​of `Dates and times` field is automatically reset. |
+| Logged in user can update the bookings.| Each booking in the bookings list has an `Update` button. On clicking `Update` the user is redirected to update page. Full details of the current booking are displayed on the update page and the user is prompted to change the booking by filling out the booking form below. User can update a booking when all fields complete. Updated booking data and the message `Your appointment is changed` are displayed to the user on profile page. |  
 
-| Logged in user can update the bookings.| Each booking in the bookings list has an `Update` button. On clicking `Update` the user is redirected to update page. Full details of the current booking are displayed on the update page and the user is prompted to change the booking by filling out the booking form below. User can update a booking when all fields complete. Updated booking data is displayed on profile page.  |  
 
 #####  Security Tests
 
@@ -100,7 +101,7 @@ The following User stories were not completed (marked as `Could have` in MoSCoW 
 | ------------------ | ------------- |
 |Non logged in user cannot make a booking. | The booking page is available only to authorized users. If non logged in user clicks `Book` button on the landing page an informational message is displayed asking them to log in to make an appointment.  |
 |Non logged in user cannot access profile page. | The link to the profile page is visible only to authorized users.|
-|User cannot delete a booking without confirmation. | Each booking in the bookings list has an `Delete` button. On clicking `Delete` the user is redirected to delete page and is asked to confirm that they want to cancel the appointment. Сlicking `Yes` deletes the booking. Updated booking data is displayed on profile page.
+|User cannot delete a booking without confirmation. | Each booking in the bookings list has an `Delete` button. On clicking `Delete` the user is redirected to delete page and is asked to confirm that they want to cancel the appointment. Сlicking `Yes` deletes the booking. The profile page displays updated booking details and the message `Your booking has been cancelled`.
 | Non superuser cannot access admin panel. | The admin panel is accessible only to the user with a superuser login and password. |
 
 ##### Admin Tests
@@ -113,3 +114,11 @@ The following User stories were not completed (marked as `Could have` in MoSCoW 
 |Admin can search and filter data in database tables.  | Admin can search and filter data in database tables using custom fields specified in the corresponding classes. |
 |Admin can delete items in database. | Admin can access all fields in the database tables and can delete a model instance. Any objects which had foreign keys pointing at the object to be deleted will be deleted along with it.
 |Admin can manage the barber's availability. | Admin can check or uncheck `is_available` flag for each barber changing the work schedule in case the barber is sick, goes on vacation, or is absent for some other reason. Unchecked `is_available` flag means that the barber will not be available to the user on the booking form.
+
+##### Booking Tests
+
+| Test |  Result |          
+| ------------------ | ------------- |
+|The list of barbers is loaded correctly depending on the selected service. | Each barber provides specific services. When a specific service is selected, only those barbers who provide this service are loaded into the dropdown list of barbers. |
+|Dates and times are loaded correctly depending on the selected barber. |Each barber has his own working days of the week and times. When a barber is selected, the date and time dropdown list only contains dates in the next 7 days (starting from tomorrow) that correspond to working weekdays for the given barber, and only those time slots that are available at these days for given barber (time slots have 1 hour intervals). Previously booked time slots are not displayed. | 
+|Admin can manage the availability of barbers.|If a barber has been marked as unavailable by the admin in the django admin panel, barber's name is not shown in the barber dropdown list.|
