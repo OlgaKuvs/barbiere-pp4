@@ -1,11 +1,16 @@
-# Barbiere Maestro
+# <div id="up">Barbiere Maestro</div>
 
 ### [Live site](https://barbiere-e0b7941f6ea4.herokuapp.com/)
 
 ## Contents:
 
 - <a href="#ux">UX</a>
+  - <a href="#strategy">Strategy</a>
+  - <a href="#db">Database structure</a>
+  - <a href="#design">Design</a>
 - <a href="#testing">Testing</a>
+  - <a href="#testing_us">Testing User Stories</a>
+  - <a href="#testing_features">Testing Features</a>
 
 ## <div id="ux">UX</div>
 ### Overview
@@ -21,7 +26,7 @@ Barbiere Maestro is a website for a modern barbershop salon. The main goal is to
 - As a returning user, who already has an account I would like quickly and easily make an appointment with a barber.
 - As a returning user, I would like to see updates to the information on the site so that I can find something new and interesting for myself (for example, new modern haircuts).
 
-### Strategy
+### <div id="strategy">Strategy</div>
 Determining the best approach meant studying the needs of potential users. This included users logging in, quickly and easily booking appointments, reading, updating and deleting their appointments (CRUD). 
 One of the main features of this website is the ability for the registered user to fill out and submit the booking form without refreshing the page. The form contains 3 dependent dropdown lists where the user can select the service he needs, the barber and the date and time of appointment.
 
@@ -48,12 +53,37 @@ Issues were used to create User Stories with a custom templates for admin and us
   - As an Admin I would like to view the bookings so that I can manage the barber's timetable.
   - As an admin I would like to have an access to database data so that I can make necessary changes (CRUD).
 
+  ---
+
+### <div id="db">Database structure</div>
+
+![](documentation/db_diagram.png)
+
+When I decided on my initial concept of this project I knew I needed to understand what type of data I would need to store and the relationships between them. I created a Database Schema to help guide me.
+
+The pre-planned database structure underwent a number of changes during the work on the project, in particular, `description` and `image` fields were added to `Service` and `Barber` models, and the service duration field was removed as unnecessary. 
+
+### <div id="design">Design</div>
+
+The site design is intuitive and functional. Google fonts Lato (body) and Raleway (headers) have been used to customize the default Bootstrap fonts. Sans Serif was chosen as the backup font. 
+The main goal of the site is to provide users with practical and useful information about the barbershop and functionality for making an appointment, and in this context, purposeful efforts have been made, as well as focus on the views required by users.
+
+####Colours
+
+The following colour palette was used from [Coolors](https://coolors.co/):
+
+![](documentation/colour_palette.png)
+
+The colours are chosen to convey male masculinity and brutality. The color `Tomato` for the buttons was chosen to attract attention and contrast with the rest of the colors in the design.
+<a href="#up">Back to Top of page</a>
+
+---
 
 ## <div id="testing">Testing</div>
 
 ### Manual testing
 
-#### Testing User Stories 
+#### <div id="testing_us">Testing User Stories </div>
 
 | User story        | User story testing |           
 | ------------------ | ------------- | 
@@ -72,7 +102,7 @@ The following User stories were not completed (marked as `Could have` in MoSCoW 
  - As a Registered User, I want to receive a confirmation text message or email, so that I know my appointment has been successfully booked.
  - As a Registered User I would like to be able to make an appointment with any barber to get the opportunity to choose a wider range of dates and times.
 
-#### Testing Features
+#### <div id="testing_features">Testing Features</div>
 ##### Navigation links
 
 | Test |  Result |          
@@ -122,3 +152,29 @@ The following User stories were not completed (marked as `Could have` in MoSCoW 
 |The list of barbers is loaded correctly depending on the selected service. | Each barber provides specific services. When a specific service is selected, only those barbers who provide this service are loaded into the dropdown list of barbers. |
 |Dates and times are loaded correctly depending on the selected barber. |Each barber has his own working days of the week and times. When a barber is selected, the date and time dropdown list only contains dates in the next 7 days (starting from tomorrow) that correspond to working weekdays for the given barber, and only those time slots that are available at these days for given barber (time slots have 1 hour intervals). Previously booked time slots are not displayed. | 
 |Admin can manage the availability of barbers.|If a barber has been marked as unavailable by the admin in the django admin panel, barber's name is not shown in the barber dropdown list.|
+
+<a href="#up">Back to Top of page</a>
+
+###Bugs
+
+##### LoginForm issue
+
+- When processing data from the user login form, the following error occurred:
+
+![](documentation/error_login_form.png)
+
+- After setting up the `LoginForm` correctly, the error was fixed: 
+
+![](documentation/fixed_login_form_bug.png)
+
+##### DateTime issue
+
+- When iterating through DateTime and Time objects a number of errors occurred due to format mismatches. Function `available_weekday(days)` returned dates in the DateTime format, and from this data I needed to get the day of the week (since the database indicates the days of the week on which a particular barber works). And then I needed to create time slots to display them in the booking form. To combine the date and time, the function `datetime.combine()` was used.
+
+![](documentation/fixed_bug_datetime.png)
+
+##### Background images issue
+
+Once I deployed the project to heroku, the background images (hero image and footer background image) were not loading from cloudinary. 
+I tried various solutions to the problem, and in the end I added the direct URL to the images to my `style.css` file. Once I reloaded the static and pushed to github, my heroku app reloaded, deployed and was working.
+

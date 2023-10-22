@@ -188,7 +188,7 @@ def user_login(request):
     POST: Logs in user and redirects to profile page.
     """  
     if request.method == 'POST':
-        form = LoginForm(request.POST)
+        form = LoginForm(request.POST)       
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request, username=username, password=password)
@@ -198,7 +198,7 @@ def user_login(request):
             return redirect('user_profile')
         else:
             messages.info(request, 'Username or password is wrong! Try again...')
-            return redirect('user_login')
+            return redirect('user_login')        
     else:
         form = LoginForm()       
         context = {'form': form}       

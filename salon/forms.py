@@ -1,11 +1,9 @@
 from django import forms
-from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
-from django.urls import reverse_lazy
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
-from .models import Service, Barber, WorkingHours
+
 
 class CustomerForm(UserCreationForm):
     username = forms.CharField(max_length=20, help_text=('Required. 20 characters or fewer. Letters, digits and @/./+/-/_ only.'))
