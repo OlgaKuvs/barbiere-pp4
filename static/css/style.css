@@ -105,7 +105,8 @@ hr {
 }
 
 .menu {
-    float: right;    
+    float: right; 
+    margin: 0;   
 }
 
 #login, #logout, #profile  {
