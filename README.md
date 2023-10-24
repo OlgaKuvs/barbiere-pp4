@@ -9,8 +9,8 @@
   - <a href="#db">Database structure</a>
   - <a href="#design">Design</a>
 - <a href="#testing">Testing</a>
-  - <a href="#testing_us">Testing User Stories</a>
-  - <a href="#testing_features">Testing Features</a>
+
+
 
 ## <div id="ux">UX</div>
 ### Overview
@@ -96,6 +96,20 @@ The colours are chosen to convey male masculinity and brutality. The color `Toma
 
 ### Manual testing
 
+Thorough testing was conducted by the developer and multiple users among friends and family. Usability suggestions were considered and acted on.
+All design features have been manually tested and everything functions as expected. Testing was completed in my local terminal and also in Heroku deployment.
+
+- Testing for responsiveness was conducted using Chrome Dev Tools. The website was tested extensively on a range of emulated mobile, tablet and large format screen sizes in both portrait and landscape orientations.<a href="#responsiveness">(Testing results are here)</a>
+
+- All HTML files were passed through the W3C validator with no errors.
+- CSS file (`style.css`) was passed through the W3C validator with no errors.
+- The website was tested on browsers Chrome, Firefox, Edge and Opera.
+- All user flows were tested, including landing page navigation, link clicks and forms submissions.
+- All forms have been tested to ensure they are validated and can be submitted without errors.
+
+
+The steps and results are as follows.
+
 #### <div id="testing_us">Testing User Stories </div>
 
 | User story        | User story testing |           
@@ -162,6 +176,23 @@ The colours are chosen to convey male masculinity and brutality. The color `Toma
 |Dates and times are loaded correctly depending on the selected barber. |Each barber has his own working days of the week, and times. When a barber is selected, the date and time dropdown list only contains dates in the next 7 days (starting from tomorrow) that correspond to working weekdays for the given barber, and only those time slots that are available at these days for given barber (time slots have 1 hour intervals). Previously booked time slots are not displayed. | 
 |Admin can manage the availability of barbers.|If a barber has been marked as unavailable by the admin in the django admin panel, barber's name is not shown in the corresponding dropdown list.|
 
+#### <div id="responsiveness">Responsiveness Testing</div>
+
+Testing for responsiveness was conducted using Chrome Dev Tools. The website was tested extensively on a range of emulated mobile, tablet and large format screen sizes in both portrait and landscape orientations.
+
+| Device |  Resolution  |   Result  |        
+| ------------------ | ------------- | ------------- |
+| Samsung Galaxy S8+|  360 x 740  |   Pass  |
+| iPhone 6/7/8 |  375 x 667  |   Pass  |
+| iPhone X |  375 x 812  |   Pass  | 
+| iPhone 12 PRO |  390 x 844  |   Pass  |
+| Samsung Galaxy A51/71 |  412 x 914  |   Pass  |
+| iPhone XR |  414 x 896  |   Pass  | 
+| iPad Mini |  768 x 1024  |   Pass  | 
+| iPad Air |  820 x 1180  |   Pass  | 
+| iPad Pro |  1024 x 1366 |   Pass  | 
+| HP Laptop 14s |  1920 x 1080|   Pass  | 
+
 <a href="#up">Back to Top of page</a>
 
 ---
@@ -193,6 +224,8 @@ I tried various solutions to the problem, and in the end I added the direct URL 
 ### Google Lighthouse Testing
 #### Desktop
 
+Site pages have been tested using Lighthouse to identify performance and accessibility issues and ensure best practices are followed.
+
 > Homepage (index.html)
 
 ![](documentation/lighthouse_homepage.png)
@@ -215,7 +248,11 @@ Result: no errors or warnings.
 Result: no errors.
 
 ### Python Validation
+
+The only issues found in any of the Python files when running through the Pep8CI online validator were due to extra whitespaces and too long lines, and have been fixed.
+
 > views.py
 
 ![](documentation/views_valid.png)
 Result: no errors.
+<a href="#up">Back to Top of page</a>

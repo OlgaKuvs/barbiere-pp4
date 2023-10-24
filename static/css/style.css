@@ -488,7 +488,11 @@ hr {
 
     .hero-container { 
         min-height: 150px;        
-    }   
+    } 
+    
+    .menu {
+        margin-right: 0;   
+    }
 
     .footer_content {
         margin: 10px 10px;
@@ -531,5 +535,11 @@ hr {
         border-radius: 20px;
         margin-right: 10px;
         padding: 7px;   
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    .menu {
+        margin-right: 10px;   
     }
 }
