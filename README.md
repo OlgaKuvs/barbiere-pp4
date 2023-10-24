@@ -37,30 +37,31 @@ To prioritize tasks [MoSCoW method](https://github.com/users/OlgaKuvs/projects/3
 ##### User Stories 
 Issues were used to create User Stories with a custom templates for admin and user. I added the acceptance criteria and the tasks so I can track my work effectively. Once I completed a User Story I would move it from in progress to completed. 
 
-- Completed User Stories:<br /><br />
+- Completed User Stories:<br />
 
-  - Epic: Enable users to CRUD the bookings.<br /><br />
+  - Epic: Enable users to CRUD the bookings.<br />
 
     - As a Registered User I would like to see a list of available services, including relevant details such as barber name, appointment date and time so that I can choose the options that suit me.
     - As a Registered User I would like to view my appointments so that I can keep track of my booking (CRUD).
      - As a Registered User I would like to edit my booking so that I can change the details (CRUD).
-    - As a Registered User I would like to delete my booking so that I can cancel my appointment (CRUD).<br /><br />
+    - As a Registered User I would like to delete my booking so that I can cancel my appointment (CRUD).<br />
 
-  - Epic: Enable unregistered users to view all the key information about the barbershop.<br /><br />
+  - Epic: Enable unregistered users to view all the key information about the barbershop.<br />
 
-    - As a User I would like to examine the information on the home page about the services provided so that decide whether I want to use them.<br/><br/>
+    - As a User I would like to examine the information on the home page about the services provided so that decide whether I want to use them.<br/>
 
-  - Epic: Enable users to create an account and log in.<br/><br/>
+  - Epic: Enable users to create an account and log in.<br/>
+
     - As a User I would like to create an account so that I can book an appointment.
-    - As a User, I would like to log in, so that I can access my profile.<br/><br/>
+    - As a User, I would like to log in, so that I can access my profile.<br/>
 
-  - Epic: Set up admin page for admin (superuser) to manage barbershop's work.<br/><br/>
+  - Epic: Set up admin page for admin (superuser) to manage barbershop's work.<br/>
     - As an admin I would like to have an access to database data so that I can make necessary changes (CRUD).
-    - As an Admin I would like to view the bookings so that I can manage the barber's timetable.<br/><br/>
+    - As an Admin I would like to view the bookings so that I can manage the barber's timetable.<br/>
 
-- Uncompleted User Stories:<br/><br/>
+- Uncompleted User Stories:<br/>
 
-    The following User stories were not completed (marked as `Could have` in MoSCoW method table) as they were deemed to be not necessary for this project at this time but are indications of possible future features:<br/><br/> 
+    The following User stories were not completed (marked as `Could have` in MoSCoW method table) as they were deemed to be not necessary for this project at this time but are indications of possible future features:<br/> 
 
     - As a Registered User, I want to receive a confirmation text message or email, so that I know my appointment has been successfully booked.
     - As a Registered User I would like to be able to make an appointment with any barber to get the opportunity to choose a wider range of dates and times. 
@@ -165,7 +166,7 @@ The colours are chosen to convey male masculinity and brutality. The color `Toma
 
 ---
 
-###Bugs
+### Bugs
 
 ##### LoginForm bug
 
@@ -205,4 +206,16 @@ I tried various solutions to the problem, and in the end I added the direct URL 
 ![](documentation/lighthouse_booking.png)
 
 
-HTML W3 Validation
+### HTML W3 Validation
+![](documentation/html_valid.png)
+Result: no errors or warnings.
+
+### CSS Validation
+![](documentation/css_valid.png)
+Result: no errors.
+
+### Python Validation
+> views.py
+
+![](documentation/views_valid.png)
+Result: no errors.

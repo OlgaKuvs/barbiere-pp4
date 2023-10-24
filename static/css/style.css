@@ -93,8 +93,7 @@ hr {
 
 .navbar-toggler-icon { 
     background-color: #9e8a78;  
-    color: #eee;
-    border-style: 1px solid #9e8a78; 
+    color: #eee;    
     border-radius: 20%;
 }
 
@@ -115,7 +114,7 @@ hr {
     background-color: #f75c37;
     color: #222227;
     font-weight: 600;   
-    border-color: #f75c37;
+    border-color: #f16a48;
     border-radius: 20px;    
     padding: 7px;   
 }
@@ -147,8 +146,8 @@ hr {
     color: #222227;  
     font-size: 20px;
     font-weight: 400;  
-    background-color: #f16a48;
-    border-color: #f75c37;
+    background-color: #f75c37;
+    border-color: #f16a48; 
     border-radius: 20px;
     margin-right: 20px;
     padding: 10px;
@@ -231,7 +230,7 @@ hr {
 
 #submit-id-submit {
     background-color: #f16a48;
-    border-color: #f75c37;
+    border-color: #f16a48;
     border-radius: 20px;
     color: #222227 !important;     
 }
@@ -245,8 +244,8 @@ hr {
     color: #222227;  
     font-size: 20px;
     font-weight: 400;  
-    background-color: #f16a48;
-    border-color: #f75c37;
+    background-color: #f75c37; 
+    border-color: #f16a48;
     border-radius: 20px;
     margin-right: 20px;
     padding: 10px;
@@ -274,7 +273,7 @@ hr {
 
 .btn-book {
     background-color: #f75c37;  
-    border-color: #f75026; 
+    border-color: #f16a48;
     color: #222227;
     padding: 5px 25px;
     border-radius: 20px; 
@@ -305,7 +304,7 @@ hr {
 
 .btn-yes {
     background-color: #f75c37;
-    border-color: #f75c37;
+    border-color: #f16a48;
     padding: 5px 25px;
     border-radius: 20px; 
     border-style: none;    
