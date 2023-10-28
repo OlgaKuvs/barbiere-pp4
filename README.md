@@ -1,5 +1,8 @@
 # <div id="up">Barbiere Maestro</div>
 
+![](documentation/mockup.png
+)
+
 ### [Live site](https://barbiere-e0b7941f6ea4.herokuapp.com/)
 
 ## Contents:
@@ -88,6 +91,11 @@ The following colour palette was used from [Coolors](https://coolors.co/):
 ![](documentation/colour_palette.png)
 
 The colours are chosen to convey male masculinity and brutality. The color `Tomato` for the buttons was chosen to attract attention and contrast with the rest of the colors in the design.
+
+#### Wireframes
+
+![](documentation/wireframe.png)
+
 <a href="#up">Back to Top of page</a>
 
 ---
@@ -132,18 +140,19 @@ The steps and results are as follows.
 | ------------------ | ------------- |
 | Non logged in user can access the links of landing page in the navbar.  | Non logged in user can access Home, Services, Our Staff, Gallery and Contact pages. All navigation links on landing page are working and bring the user to the correct part of the page. Active page link is highlighted in each case. Navbar remains in view when scrolling. 
 | Non logged in user can go to the home page by clicking the title or logo in the page header. | Links from `Barbiere Maestro` title and logo image allow the user to return to home page from each part of landing page. |
-| Non logged in user can access to sign in and login pages.| User can click the `Login` button on the right side of the header and is redirected to the login page. For signing in, there are 2 navigation buttons `Sign up and Book now!` on hero image and in the footer. By clicking these buttons the user is redirected to the sign up page. |
-| Logged in user can access to profile page and log out. | Logged in user can view `Profile` and `Logout` buttons on the right side of the page header. Sign up buttons are not visible to the logged in user. |
-| Logged in user can view the bookings.| List of bookings is available on user's profile page. User can acccess the profile page by clicking `Profile` button on the navigation bar. |
+| Non logged in user can access to sign in and login pages.| User can click the `Login` button on the right side of the header and is redirected to the login page. For signing in, there are 2 navigation buttons `Book now!` in the header and in the footer. By clicking these buttons the user is redirected to the sign in page. |
+| Logged in user can access to profile page and log out. | Logged in user can view `Profile` and `Logout` buttons on the right side of the page header. `Book now!` buttons are not visible to the logged in user. |
+| Logged in user can view the bookings.| List of bookings is available on user's profile page. User can acccess the profile page by clicking `Profile` button on the navigation bar. If user |
 | Logged in user can log out of their profile.| User can click `Logout` button on the navigation bar and  log out of their profile. |
+
 
 ##### User Forms
 
 | Test |  Result |          
 | ------------------ | ------------- |
-| User can create account. | User is redirected to the registration page by clicking `Sign up and Book now!` on the homepage. Also user can access registration page from login page. They are asked to register if they don't already have an account. The registration form has error handling built in so the user must make the correct inputs. If inputs are incorrect the user is shown a message about incorrect data entry. If registration is successful, a message `Your account is created successfully` is displayed to the user. |
+| User can create account. | User is redirected to the registration page by clicking `Book now!` on the homepage. Also user can access registration page from login page. They are asked to register if they don't already have an account. The registration form has error handling built in so the user must make the correct inputs. If inputs are incorrect the user is shown a message about incorrect data entry. If registration is successful, a message `Your account is created successfully` is displayed to the user. |
 | User can log in. | User is redirected to the login page by clicking `Login` button. Also user can access login page from registration page. They are asked to log in if they have an account. After authorization the message `You are successfully logged in` is displayed. If the username or password is incorrect, the message `Username or password is wrong! Try again...` is displayed to the user. |
-| Logged in user can make a booking. | Logged in user can access booking page from `Our staff` part of landing page by clicking `Book now` button, and also from user profile page by clicking  `Book an appointment`. Then user is redirected to the booking page. On the booking page, the user can fill out a form by selecting services from the list, barbers from the list, choose the date and time of the appointment, and then click `Book` button. User can make a booking only after the values ​​in all dropdown lists have been selected. User is redirected to the profile page to view the list of their appointments. |
+| Logged in user can make a booking. | Logged in user can access booking page from user profile page by clicking  `Book an appointment`. Then user is redirected to the booking page. On the booking page, the user can fill out a form by selecting services from the list, barbers from the list, choose the date and time of the appointment, and then click `Book` button. User can make a booking only after the values ​​in all dropdown lists have been selected. User is redirected to the profile page to view the list of their appointments. |
 | Autoreset booking form fields. | On changing the selected value of `Services` field, the values ​​of `Barbers` and `Dates and times` fields are automatically reset. On changing the selected value of `Barbers` field, the value ​​of `Dates and times` field is automatically reset. |
 | Logged in user can update the bookings.| Each booking in the bookings list has an `Update` button. On clicking `Update` the user is redirected to update page. Full details of the current booking are displayed on the update page and the user is prompted to change the booking by filling out the booking form below. User can update a booking when all fields complete. Updated booking data and the message `Your appointment is changed` are displayed to the user on profile page. |  
 

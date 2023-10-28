@@ -71,7 +71,7 @@ hr {
     border-color: #222227;       
 }
 
-.choosen, .copyright  {
+.choosen  {
     color: #9e8a78;
 }
 
@@ -424,6 +424,11 @@ hr {
 
 .footer-content > ul > li {
     list-style: none;    
+}
+
+.copyright  {
+    color: #9e8a78;
+    padding-bottom: 0 !important;
 }
 
 
