@@ -10,6 +10,11 @@
         <div class="col-lg-7"> 
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header"><h3 class="centered">Log in</h3>
+                    <div class="small centered">
+                        <a href="{% url 'registration' %}">
+                            Don't have an account? Please sign in.
+                        </a>
+                    </div>
                 </div>
                 <div class="card-body">
 
@@ -17,13 +22,7 @@
                     <!-- {{ form|as_crispy_errors }} -->
                     {% crispy form %} 
                     
-                </div>
-                <div class="card-footer centered">
-                    <div class="small">
-                        <a href="{% url 'registration' %}">
-                            Don't have an account? Please sign in.
-                        </a></div>
-                </div>
+                </div>                
             </div>
         </div>
     </div>

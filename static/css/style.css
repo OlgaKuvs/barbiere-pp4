@@ -6,7 +6,7 @@ body {
     font-weight: 300;
     font-size: 16px;
     color: #222227;
-    margin-top: 0px;   
+    margin-top: 0px;       
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -59,12 +59,11 @@ hr {
 
 .nav-container {
     font-weight: 800;
-    font-size: 16px;        
+    font-size: 16px;      
 }
 
 .nav-r {
-    justify-content: end;   
-    padding-right: 10px; 
+    justify-content: end;     
 } 
 
 .navbar-d {
@@ -83,10 +82,9 @@ hr {
     letter-spacing: 1px;        
 }
 
-
 .navbar-toggler, .navbar-toggler:focus,
-.hero-container a:hover, .footer_content a:hover,
-.hero-container a:focus, .footer_content a:focus  {    
+.hero-container a:hover, .footer-content a:hover,
+.hero-container a:focus, .footer-content a:focus  {    
     border-style: none; 
     color: #eee;          
   }
@@ -141,7 +139,8 @@ hr {
 }
 
 .hero-container a, 
-.footer_sign_in a,
+.footer-sign-in a,
+.header-sign-in a,
 .btn-profile a {   
     color: #222227;  
     font-size: 20px;
@@ -168,6 +167,14 @@ hr {
     align-items: flex-end;
     letter-spacing: 5px;
 }
+
+/* .btn-fixed {
+    position: fixed;    
+    right: 10px;
+    z-index: 2;
+} */
+
+
 
 /* Services container */
 
@@ -240,7 +247,7 @@ hr {
     transition: 0.5s !important;  
 }
 
-.btn-reg {    
+/* .btn-reg {    
     color: #222227;  
     font-size: 20px;
     font-weight: 400;  
@@ -250,15 +257,16 @@ hr {
     margin-right: 20px;
     padding: 10px;
     text-decoration: none;
-}
+} */
 
-.btn-reg:hover,
+/* .btn-reg:hover, */
 .hero-container a:hover,
 #login:hover, 
 #logout:hover, 
 #profile:hover,
 .btn-profile a:hover,
-.footer_sign_in a:hover,
+.footer-sign-in a:hover,
+.header-sign-in a:hover,
 .btn-book:hover {
     background-color: #f75c37;
     color: #eee;
@@ -387,23 +395,24 @@ hr {
     justify-content: space-between;    
 }
 
-.footer_sign_in a {   
+.footer-sign-in a,
+.header-sign-in a {   
     margin-right: 0px;
     padding: 10px;
-    text-align: center;
+    text-align: center;    
 }
 
 .menu-r {
     justify-content: end;    
 }
 
-.footer_content {
+.footer-content {
     margin-top: 40px;
     margin-bottom: 50px;
     color: #cecece;          
 }
 
-.footer_content h4 {
+.footer-content h4 {
     font-size: 20px;
     letter-spacing: 3px;
     position: relative;
@@ -413,8 +422,8 @@ hr {
     padding-bottom: 0.5em;
 }
 
-.footer_content > ul > li {
-    list-style: none;
+.footer-content > ul > li {
+    list-style: none;    
 }
 
 
@@ -428,10 +437,6 @@ hr {
 
 #navbarDropdown {
     text-align: end;    
-}
-
-.w-50 {
-    width: 600px !important;
 }
 
 
@@ -455,10 +460,6 @@ hr {
         font-size: 12px !important;
     }
 
-    .brand {
-        display: none;
-    }
-
     .logo {
         margin-left: 5px;
     }
@@ -467,13 +468,13 @@ hr {
         margin-right: 5px !important;
    }
 
-   .nav-r {
-        padding-right: 0;
-    }   
-
     .btn-table {
         padding: 5px;        
     } 
+
+    #slogan {  
+        font-size: 25px !important;
+    }
 }
 
 
@@ -494,21 +495,29 @@ hr {
         margin-right: 0;   
     }
 
-    .footer_content {
+    .brand {
+        display: none;
+    }
+
+    .footer {
+        min-height: 370px;
+    }
+
+    .footer-content {
         margin: 10px 10px;
     }
 
-    .footer_content h5 {
+    .footer-content h5 {
         font-size: 15px;
     }
     
-    .footer_content > ul > li {
+    .footer-content > ul > li {
         font-size: 12px;
     }
 
     .sl-box {
-        height: 90px;
-        letter-spacing: 3px;
+        height: 120px;
+        letter-spacing: 3px;       
     }
    
     #slogan {  
@@ -528,9 +537,11 @@ hr {
     }
 
     .hero-container a, 
-    .footer_sign_in a,
-    .btn-profile a,
-    .btn-reg { 
+    .footer-sign-in a,
+    .header-sign-in a,
+    .btn-profile a
+    /* ,  .btn-reg  */
+    { 
         font-size: 15px;    
         border-radius: 20px;
         margin-right: 10px;
@@ -541,5 +552,11 @@ hr {
 @media only screen and (max-width: 1024px) {
     .menu {
         margin-right: 10px;   
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .header-sign-in {
+        margin-left: 50px;   
     }
 }
