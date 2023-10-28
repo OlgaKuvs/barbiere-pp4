@@ -55,9 +55,11 @@
                            <li class="nav-item">
                               <p class="user_hello">Hello, {{ request.user.username }}!</p>
                            </li>
-                           <li class="nav-item">
-                              <a class="nav-link link centered" id="profile" href="{% url 'user_profile' %}">Profile</a>
-                           </li> 
+                           {% if request.path != '/profile/' %}
+                              <li class="nav-item">
+                                 <a class="nav-link link centered" id="profile" href="{% url 'user_profile' %}">Profile</a>
+                              </li>
+                           {% endif %} 
                            <li class="nav-item">
                               <a class="nav-link link centered" id="logout" href="{% url 'user_logout' %}">Logout</a>
                            </li>
@@ -70,18 +72,7 @@
               </div>           
            </div>
         </nav>
-        <div class="container-fluid hero-container">
-           <!--<div class="row">
-            {% if not user.is_authenticated %}
-                <div>           
-                  <a class="btn-fixed" href="{% url 'registration' %}">Book now!</a>     
-               </div>
-            {% else %}
-               <div class="d-flex justify-content-end">
-                  <p></p>                  
-               </div>
-            {% endif %} 
-           </div>-->
+        <div class="container-fluid hero-container">          
            <div class="row">               
               <div class="d-flex justify-content-center mt-auto sl-box">
                   <h1 id="slogan">Your best look</h1>

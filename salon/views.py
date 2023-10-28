@@ -202,7 +202,11 @@ def user_login(request):
                 request, username + ', you are successfully logged in!'
                 )
             login(request, user)
-            return redirect('user_profile')
+            bookings = Booking.objects.filter(customer=request.user)
+            if bookings:
+                return redirect('user_profile')
+            else:
+                return redirect('booking')
         else:
             messages.info(
                 request, 'Username or password is wrong! Try again...'

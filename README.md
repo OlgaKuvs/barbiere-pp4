@@ -142,7 +142,7 @@ The steps and results are as follows.
 | Non logged in user can go to the home page by clicking the title or logo in the page header. | Links from `Barbiere Maestro` title and logo image allow the user to return to home page from each part of landing page. |
 | Non logged in user can access to sign in and login pages.| User can click the `Login` button on the right side of the header and is redirected to the login page. For signing in, there are 2 navigation buttons `Book now!` in the header and in the footer. By clicking these buttons the user is redirected to the sign in page. |
 | Logged in user can access to profile page and log out. | Logged in user can view `Profile` and `Logout` buttons on the right side of the page header. `Book now!` buttons are not visible to the logged in user. |
-| Logged in user can view the bookings.| List of bookings is available on user's profile page. User can acccess the profile page by clicking `Profile` button on the navigation bar. If user |
+| Logged in user can view the bookings.| List of bookings is available on user's profile page. If the user already has appointments assigned, they are redirected from the `Login` page to the `Profile` page to view current bookings. If the user does not have a reservation yet, they are redirected to the `booking` page. User can acccess the profile page by clicking `Profile` button on the navigation bar.  |
 | Logged in user can log out of their profile.| User can click `Logout` button on the navigation bar and  log out of their profile. |
 
 
