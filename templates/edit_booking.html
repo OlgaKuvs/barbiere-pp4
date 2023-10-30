@@ -23,12 +23,16 @@
                                 hx-target="#barbers">
                                 <option selected disabled>Choose the service</option>
                                 {% for service in services %}
-                                <option value="{{ service.id}}">{{ service.name }}</option>
+                                    {% if service == booking.service %}
+                                        <option  selected value="{{ service.id }}"> {{ service.name }} </option>
+                                    {% else %}
+                                        <option value="{{ service.id}}">{{ service.name }}</option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
 
                             <div id="barbers" class="my-4">
-                                {% include 'barbers.html' %}
+                                {% include 'barbers.html' with barber=booking.barber booking=booking %}
                             </div>
                             <div id="working_days" class="my-4">
                                 {% include 'working_days.html' %}
