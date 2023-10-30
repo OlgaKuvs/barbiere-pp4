@@ -242,10 +242,11 @@ def user_login(request):
 
 def user_profile(request):
     """
-    Renders user profile page with a list of bookings.
+    Renders user profile page with a list of bookings and next day date.
     """
     bookings = Booking.objects.filter(customer=request.user).order_by('-date')
-    context = {'bookings': bookings}
+    next_day = datetime.now() + timedelta(days=1)
+    context = {'bookings': bookings,'next_day': next_day}
     return render(request, 'profile.html', context)
 
 
