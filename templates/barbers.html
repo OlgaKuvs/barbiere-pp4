@@ -6,7 +6,11 @@
     hx-target="#working_days" onchange="stateHandle1()">
     <option selected disabled>Choose the barber</option>
     {% for barber in barbers %}
-    <option value="{{ barber.id }}">{{ barber.name }}</option>
+        {% if barber == booking.barber %}
+            <option selected value="{{ barber.id }}">{{ barber.name }}</option>
+        {% else %}  
+            <option value="{{ barber.id }}">{{ barber.name }}</option>
+        {% endif %}  
     {% endfor %}
 </select>
 
@@ -18,19 +22,9 @@
 
 <script type="text/javascript">
     function stateHandle1() {
-        // service = document.getElementById("service");
-        // barber = document.getElementById("barber")
         working_days = document.getElementById("working_days")
         working_days.selectedIndex = 0
-        button.disabled = true;      
-
-        // if(service.selectedIndex > 0 && barber.selectedIndex > 0 
-        //     && working_days.selectedIndex > 0 )  {          
-        //     button.disabled = false; 
-        // } 
-        // else {
-        //     button.disabled = true;
-        // }
+        button.disabled = true;
     }
 </script>
 
