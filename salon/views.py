@@ -41,9 +41,9 @@ def save_form(request):
         customer = request.user
         service = request.POST.get('service')
         barber = request.POST.get('barber')
-        working_days = request.POST.get('working_days')
+        barber_days = request.POST.get('working_days')
         format = "%A, %d %B, %Y   %H:%M"
-        date = datetime.strptime(working_days, format)
+        date = datetime.strptime(barber_days, format)
 
         booking = Booking.objects.create(
             customer=customer,
@@ -72,9 +72,9 @@ def working_days(request):
     for chosen service and barber to booking page.
     """
     barber = request.GET.get("barber")
-    working_days = WorkingHours.objects.filter(barber=barber)
+    barber_days = WorkingHours.objects.filter(barber=barber)
     next_week = available_weekday(7)
-    time_slots = get_time_slots(next_week, working_days)
+    time_slots = get_time_slots(next_week, barber_days)
     visit_times = checkDay(barber, time_slots)
     context = {'visit_times': visit_times}
     return render(request, 'working_days.html', context)
@@ -121,18 +121,6 @@ def get_time_slots(next_week, barber_days):
     return(all_times)
 
 
-def delete_booking(request, id):
-    """
-    Cancel given booking.
-    """
-    booking = get_object_or_404(Booking, id=id)
-    if request.method == 'POST':
-        booking.delete()
-        messages.info(request, 'Your booking has been cancelled.')
-        return redirect('user_profile')
-    return render(request, 'delete_booking.html', {'booking': booking})
-
-
 def edit_booking(request, id):
     """
     GET: renders edit_booking page for given booking.
@@ -143,9 +131,9 @@ def edit_booking(request, id):
         customer = request.user
         service = request.POST.get('service')
         barber = request.POST.get('barber')
-        working_days = request.POST.get('working_days')
+        barber_days = request.POST.get('working_days')
         format = "%A, %d %B, %Y   %H:%M"
-        date = datetime.strptime(working_days, format)
+        date = datetime.strptime(barber_days, format)
         booking = Booking.objects.filter(id=id).update(
             customer=customer,
             barber=Barber.objects.get(id=int(barber)),
@@ -159,11 +147,40 @@ def edit_booking(request, id):
     else:
         booking = get_object_or_404(Booking, id=id)
         services = Service.objects.all()
+        barbers = Barber.objects.filter(services=booking.service)
+        visit_times = edit_working_days(booking.barber).get('visit_times')
         new_date = booking.date.strftime("%A, %d %B, %Y   %H:%M")
         context = {'services': services,
+                   'barbers': barbers,
                    'booking': booking,
-                   'new_date': new_date}
+                   'new_date': new_date,
+                   'visit_times': visit_times}
         return render(request, 'edit_booking.html', context)
+    
+
+def edit_working_days(barber):
+    """
+    Loads the working weekdays of chosen barber from db,
+    generates timeslots and returns them.
+    """
+    barber_days = WorkingHours.objects.filter(barber=barber)
+    next_week = available_weekday(7)
+    time_slots = get_time_slots(next_week, barber_days)
+    visit_times = checkDay(barber, time_slots)
+    context = {'visit_times': visit_times}
+    return (context)
+
+
+def delete_booking(request, id):
+    """
+    Cancel given booking.
+    """
+    booking = get_object_or_404(Booking, id=id)
+    if request.method == 'POST':
+        booking.delete()
+        messages.info(request, 'Your booking has been cancelled.')
+        return redirect('user_profile')
+    return render(request, 'delete_booking.html', {'booking': booking})
 
 
 def user_registration(request):
