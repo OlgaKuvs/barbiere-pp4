@@ -68,27 +68,16 @@ def barbers(request):
 
 def working_days(request):
     """
-    Handles htmx requests to load time slots to booking page.
+    Handles htmx requests to load time slots
+    for chosen service and barber to booking page.
     """
     barber = request.GET.get("barber")
     working_days = WorkingHours.objects.filter(barber=barber)
-    next_week = available_weekday(8)
-
-    # Gets list of time slots for next 7 days
-    all_times = []
-    for next_day in next_week:
-        for work_day in working_days:
-            day_of_week = next_day.weekday()
-            if work_day.day_of_week == day_of_week:
-                start_time = work_day.time_start
-                next_time = datetime.combine(next_day.date(), start_time)
-                while next_time.hour < work_day.time_end.hour:
-                    free_time = next_time.strftime("%A, %d %B, %Y   %H:%M")
-                    all_times.append(free_time)
-                    next_time = next_time + timedelta(hours=1)
-
-    visit_times = checkDay(barber, all_times)
-    return render(request, 'working_days.html', {'visit_times': visit_times})
+    next_week = available_weekday(7)
+    time_slots = get_time_slots(next_week, working_days)
+    visit_times = checkDay(barber, time_slots)
+    context = {'visit_times': visit_times}
+    return render(request, 'working_days.html', context)
 
 
 def available_weekday(days):
@@ -114,6 +103,22 @@ def checkDay(barber, all_times):
             day_time = day_time.strftime("%A, %d %B, %Y   %H:%M")
             dates.append(day_time)
     return dates
+
+
+def get_time_slots(next_week, barber_days):
+    # Gets list of time slots for next next_week days
+    all_times = []
+    for next_day in next_week:
+        for work_day in barber_days:
+            day_of_week = next_day.weekday()
+            if work_day.day_of_week == day_of_week:
+                start_time = work_day.time_start
+                next_time = datetime.combine(next_day.date(), start_time)
+                while next_time.hour < work_day.time_end.hour:
+                    free_time = next_time.strftime("%A, %d %B, %Y   %H:%M")
+                    all_times.append(free_time)
+                    next_time = next_time + timedelta(hours=1)
+    return(all_times)
 
 
 def delete_booking(request, id):
@@ -222,7 +227,7 @@ def user_profile(request):
     """
     Renders user profile page with a list of bookings.
     """
-    bookings = Booking.objects.filter(customer=request.user).order_by('date')
+    bookings = Booking.objects.filter(customer=request.user).order_by('-date')
     context = {'bookings': bookings}
     return render(request, 'profile.html', context)
 
