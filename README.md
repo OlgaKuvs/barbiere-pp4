@@ -14,7 +14,7 @@
 - <a href="#testing">Testing</a>
 - <a href="#bugs">Bugs</a>
 - <a href="#features">Existing Features</a>
-
+- <a href="#f_features">Features left to Implement</a>
 
 
 
@@ -134,7 +134,7 @@ The steps and results are as follows.
 | ------------------ | ------------- | 
 | As a User I would like to examine the information on the home page about the services provided so that decide whether I want to use them. | On the home page user can view complete information about the barbershop, services with descriptions and prices, information about each barber including his name and work experience. Also user can view the pictures of various haircuts as work examples and choose the haircut that he likes.
 | As a User I would like to create an account so that I can book an appointment. | On registering for the user account, the user populates their own information for log in in the future. User can add their username, first name, last name, e-mail address and password during the registration process (Create). | 
-| As a User, I would like to log in, so that I can access my profile. | Once logged in, a registred user can view a list of their appointments on their profile page (Read). If the user does not have an appointment yet they can click the link to make an appointment. | 
+| As a User, I would like to log in, so that I can access my profile. | Once logged in, a registred user can view a list of their appointments on their profile page (Read). If the user does not have an appointment yet they are redirected to the booking page. | 
 | As a Registered User I would like to see a list of available services, including relevant details such as barber name, appointment date and time so that I can choose the options that suit me.| On the booking page, the user can see the booking form with 3 dependent dropdown lists: the list of services, the list of barbers providing the selected service and the list of available dates and times for the selected barber. And they can choose from the lists what suits them. |
 |As a Registered User I would like to view my appointments so that I can keep track of my booking.| On the profile page user can view all details of their bookings including service name, barbers name and date and time of appointment. From this view they have access to every future (12 hours ahead and more) booking which can be updated (`Update` button) or deleted (`Delete` button).  |
 | As a Registered User I would like to edit my booking so that I can change the details. | On the profile page, the user can click the "Edit" button for each of their appointments and is redirected to the update page. On the update page they can see all the details of the current booking and below the form for making changes. After making the necessary changes, the user can click "Change" button and is redirected to the profile page, where all changes made are reflected. Or the user can click the "Cancel" button to be redirected to the profile page without making any changes.| 
@@ -319,7 +319,72 @@ On the login page, the user enters his login and password. The user also has a s
 
 ![](documentation/login.png)
 
-Once logged in, the user will be notified that they are logged in.
+Once logged in, the user will be notified that they are logged in, and redirected to the profile page. 
 
 ![](documentation/login_success.png)
+![](documentation/manage_bookings.png)
+
+### Booking page
+
+If the user does not have an appointment yet they are redirected to the booking page.
+
+![](documentation/new_booking.png)
+
+On the booking page, user can select a service from a dropdown list of services.
+
+![](documentation/services.png)
+
+Once a service is selected, a list of barbers who provide the selected service appears.
+
+![](documentation/barbers.png)
+
+After selecting a barber, a list of available dates and times for that barber appears.
+
+![](documentation/dates_times.png)
+
+The `Book` button becomes active only after the values ​​in all dropdown lists have been selected.
+
+![](documentation/booking_button.png)
+
+### Profile page
+
+On the profile page user can view all details of their bookings including service name, barber's name and date and time of appointment. From this view they have access to every future (12 hours ahead and more) booking which can be updated (`Update` button) or deleted (`Delete` button). The user profile page shows all bookings that have not been deleted.
+
+![](documentation/profile1.png)
+
+### Update page
+
+If the user selects to update a booking they are taken to a form prepopulated with the information about that appointment so it can be edited.
+
+![](documentation/update_booking.png)
+
+After changing a booking, the user will see a message indicating that the appointment has been changed and will be redirected to the profile page to view the updated information.
+
+![](documentation/updated.png)
+![](documentation/manage_bookings.png)
+
+### Delete page
+
+If the user decides to delete a booking, they are taken to a deletion confirmation page.
+
+![](documentation/delete_booking.png)
+
+If the user does not have appointments, they will see a corresponding message.
+
+![](documentation/no_bookings.png)
+
+
+## <div id="f_features">Features left to Implement</div>
+
+- Create an archive of appointments in the user profile so that the user can track his log of visits to the barbershop.
+- Improve the booking form by allowing user to select a date and time of visit separately. 
+- Allow the user to select `any barber` option if they do not care which barber to go to.
+- Add the user's phone number to the booking form so that the salon administrator can call and receive confirmation of attendance for the visit.
+- Send the user a confirmation text message or email to let them know their appointment has been successfully booked.
+- Improve the user registration form by replacing username with an email address.
+
+<a href="#up">Back to Top of page</a>
+
+
+
 
