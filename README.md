@@ -16,6 +16,8 @@
 - <a href="#features">Existing Features</a>
 - <a href="#f_features">Features left to Implement</a>
 - <a href="#technology">Languages, Technologies & Libraries</a>
+- <a href="#credits">Credits</a>
+- <a href="#deployment">Deployment</a>
 
 ## <div id="ux">UX</div>
 ### Overview
@@ -291,7 +293,7 @@ A welcome message `Hello, <username>!` appears for the logged in user.
 
 ### Landing page
 
-The landing page contains all the necessary information about the barbershop salon and the services provided. The page is available to everyone.
+ The landing page sets out all the key information a potential customer will need to know, including services and pricing. A style gallery guides visitors through the options available, working to improve the customer experience. The page is available to everyone.
 
 ![](documentation/landing_page.png)
 
@@ -407,6 +409,63 @@ If the user does not have appointments, they will see a corresponding text.
 - **GitHub** used to store the code for this project & for the projects Kanban board used to complete it.
 
 
+## <div id="credits">Credits</div>
+- [Pexels](https://www.pexels.com/) and [Freepik](https://www.freepik.com/) used for sourcing landing page photographic images.
+- [Favicon.io](https://favicon.io/) used to create favicon.
+- [Lucidchart](https://www.lucidchart.com/) used to create wireframes and database diagram.
+- [Luis Cortes](https://www.youtube.com/watch?v=zYs42XcpHYI) to learn how to create dependent dropdown lists.
+- For auto close navbar when click on link (responsive mode): https://stackoverflow.com/questions/66614050/auto-close-navbar-when-click-on-link-responsive-mode
+- For Django admin configuration: https://docs.djangoproject.com/en/4.2/ref/contrib/admin/
+- For htmx debugging: https://forum.djangoproject.com/t/django-htmx-trigger-upon-change-throws-error/18363/12
 
+<a href="#up">Back to Top of page</a>
+
+## <div id="deployment">Deployment</div>
+
+To deploy the project through Heroku I followed these steps:
+  1. Sign up / Log in to Heroku
+  2. From the main Heroku Dashboard page select 'New' and then 'Create New App'
+  3. Give the project a name and selected EU as that is the closes region to me. After this you select select create app.
+  4. The name for the app must be unique or you will not be able to continue. Heroku will create the app and bring you to the deploy tab.
+  5. From the submenu at the top, navigate to the resources tab.
+  6. Add the database to the app, in the add-ons section search for 'Heroku Postgres', select the package that appears and add 'Heroku Postgres' as the database. 
+  7. Click on the setting tab. 
+  8. Open the config vars section copy the DATABASE_URL to the clipboard for use in the Django configuration.
+  9. Inside the Django app repository create a new file called env.py
+  10. Within this file import the os library and set the environment variable for the DATABASE_URL pasting in the address copied from Heroku.
+  11. The line should appear as os.environ["DATABASE_URL"]= "Paste the link in here"
+  12. Add a secret key to the app using os.environ["SECRET_KEY"] = "your secret key goes here"
+  13. Add the secret key just created to the Heroku Config Vars as SECRET_KEY for the KEY value and the secret key value you created as the VALUE
+  14. In the settings.py file within the django app, import Path from pathlib, import os and import dj_database_url. Insert the line if os.path.isfile("env.py"): import env
+  15. Remove the insecure secret key that django has in the settings file by default and replace it with SECRET_KEY = os.environ.get('SECRET_KEY')
+  16. Replace the databases section with DATABASES = { 'default': dj_database_url.parse(os.environ.get("DATABASE_URL"))} ensure the correct indentation for python is used.
+  17. In the terminal migrate the models over to the new database connection.
+  18. Navigate in a browser to cloudinary, log in, or create an account and log in.
+  19. From the dashboard copy the CLOUDINARY_URL to the clipboard
+  20. In the env.py file  add os.environ["CLOUDINARY_URL"] = "paste in the Url copied to the clipboard here"
+  21. In Heroku, add the CLOUDINARY_URL and value copied to the clipboard to the config vars
+  22. Also add the KEY - DISABLE_COLLECTSTATIC with the Value - 1 to the config vars. 
+This key value pair must be removed prior to final deployment.
+  23. Add the cloudinary libraries to the list of installed apps, the order they are inserted is important, 'cloudinary_storage' goes above 'django.contrib.staitcfiles' and 'cloudinary' goes below it.
+  24. In the Settings.py file - add the STATIC files settings - the url, storage path, directory path, root path, media url and default file storage path.
+  25. Link the file to the templates directory in Heroku TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+  26. Change the templates directory to TEMPLATES_DIR - 'DIRS': [TEMPLATES_DIR]
+  27. Add Heroku to the ALLOWED_HOSTS list the format will be the app name given in Heroku when creating the app followed by .herokuapp.com
+  28. In your code editor, create three new top level folders, media, static, templates
+  29. Create a new file on the top level directory - Procfile
+  30. Within the Procfile add the code - web: guincorn PROJECT_NAME.wsgi
+  31. In the terminal, add the changed files, commit and push to GitHub
+  32. In Heroku, navigate to the deployment tab and deploy the branch manually, watch the build logs for any errors.
+  33. Heroku will now build the app for you. Once it has completed the build process you will see a 'Your App Was Successfully Deployed' message and a link to the app to visit the live site.
+
+##### Cloning the repository:
+1. Navigate to https://github.com/OlgaKuvs/barbiere-pp4
+2. Click on the arrow on the green code button at the top of the list of files.
+select the clone by https option and copy the URL it provides to the clipboard.
+3. Navigate to your code editor of choice and within the terminal change the directory to the location you want to clone the repository to.
+4. Type 'git clone' and paste the https link you copied from github.
+5. Press enter and git will clone the repository to your local machine.
+
+<a href="#up">Back to Top of page</a>
 
 
