@@ -15,8 +15,7 @@
 - <a href="#bugs">Bugs</a>
 - <a href="#features">Existing Features</a>
 - <a href="#f_features">Features left to Implement</a>
-
-
+- <a href="#technology">Languages, Technologies & Libraries</a>
 
 ## <div id="ux">UX</div>
 ### Overview
@@ -369,7 +368,11 @@ If the user decides to delete a booking, they are taken to a deletion confirmati
 
 ![](documentation/delete_booking.png)
 
-If the user does not have appointments, they will see a corresponding message.
+Once an appointment is deleted, the user will see a message.
+
+![](documentation/cancelled.png)
+
+If the user does not have appointments, they will see a corresponding text.
 
 ![](documentation/no_bookings.png)
 
@@ -384,6 +387,25 @@ If the user does not have appointments, they will see a corresponding message.
 - Improve the user registration form by replacing username with an email address.
 
 <a href="#up">Back to Top of page</a>
+
+## <div id="technology">Languages, Technologies & Libraries</div>
+### Languages:
+- **Python** used for the logic in this project.
+- **HTML/CSS** + **Django Template Language** used to structure webpages 
+- **Javascript** used to add timeout function for messages and change navigation link style as well as to enable the `Book` button on booking page. 
+
+### Libraries and Frameworks:
+- **Django** framework used to build this project. Provides a ready installed admin panel and includes many helper template tags that make writing code quick and efficient.
+- **Bootstrap 5** used as the base front end framework to work alongside Django.
+- **htmx** library used to fetch and load content dynamically via AJAX requests. Utilised specifically for fetching data from chained dropdown on a booking form.
+
+### Technologies:
+
+- **ElephantSQL** as a PostgreSQL database hosting service used for database.
+- **Cloudinary** used to host the static files for this project.
+- **Heroku** used for hosting the project.
+- **GitHub** used to store the code for this project & for the projects Kanban board used to complete it.
+
 
 
 
