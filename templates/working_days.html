@@ -1,7 +1,7 @@
 <label for="wd">Dates and times</label>
 <select id="wd" name="working_days" title="visit_time" class="form-select form-select-sm mb-3" onchange="stateHandle2()">
-    {% if new_date %}
-        <option selected disabled value='{{ new_date }}'>Previously selected date: {{ new_date }}</option>
+    {% if booking.date %}
+        <option selected disabled value='{{ booking.date }}'>Previously selected date: {{ booking.date|date:"l, j F, Y  G:i" }}</option>
     {% else %}
         <option selected disabled>Choose the date and time</option>
     {% endif %}

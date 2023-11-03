@@ -10,7 +10,7 @@
         <div class="col-lg-7"> 
             <div class="card shadow-lg border-0 rounded-lg mt-5">
                 <div class="card-header centered"><h3 class="centered">Your appointment: </h3>
-                    <p><h6>Service:</h6> {{ booking.service }} </p><p><h6>Barber:</h6> {{ booking.barber }}</p><p><h6>Date and time:</h6> {{ new_date }} </p>
+                    <p><h6>Service:</h6> {{ booking.service }} </p><p><h6>Barber:</h6> {{ booking.barber }}</p><p><h6>Date and time:</h6> {{ booking.date|date:"l, j F, G:i" }} </p>
                     <h3 class="centered">Would you like to change it?</h3>
                 </div>
                 <div class="card-body min-vh-100">

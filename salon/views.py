@@ -118,7 +118,7 @@ def get_time_slots(next_week, barber_days):
                     free_time = next_time.strftime("%A, %d %B, %Y   %H:%M")
                     all_times.append(free_time)
                     next_time = next_time + timedelta(hours=1)
-    return(all_times)
+    return all_times
 
 
 def edit_booking(request, id):
@@ -149,11 +149,9 @@ def edit_booking(request, id):
         services = Service.objects.all()
         barbers = Barber.objects.filter(services=booking.service)
         visit_times = edit_working_days(booking.barber).get('visit_times')
-        new_date = booking.date.strftime("%A, %d %B, %Y   %H:%M")
         context = {'services': services,
                    'barbers': barbers,
                    'booking': booking,
-                   'new_date': new_date,
                    'visit_times': visit_times}
         return render(request, 'edit_booking.html', context)
     

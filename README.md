@@ -418,6 +418,7 @@ If the user does not have appointments, they will see a corresponding text.
 ## <div id="credits">Credits</div>
 - [Pexels](https://www.pexels.com/) and [Freepik](https://www.freepik.com/) used for sourcing landing page photographic images.
 - [Favicon.io](https://favicon.io/) used to create favicon.
+- [favpng](https://favpng.com/) used for service icons templates.
 - [Lucidchart](https://www.lucidchart.com/) used to create wireframes and database diagram.
 - [Luis Cortes](https://www.youtube.com/watch?v=zYs42XcpHYI) to learn how to create dependent dropdown lists.
 - For auto close navbar when click on link (responsive mode): https://stackoverflow.com/questions/66614050/auto-close-navbar-when-click-on-link-responsive-mode

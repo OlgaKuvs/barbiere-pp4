@@ -26,8 +26,8 @@
                                 {% for booking in bookings %}
                                     <tr>
                                         <td> {{ booking.service }}</td>
-                                        <td>{{ booking.barber  }}</td>
-                                        <td>{{ booking.date }}</td>
+                                        <td>{{ booking.barber }}</td>
+                                        <td>{{ booking.date|date:"D, j N, G:i" }}</td>
                                         {% if booking.date >= next_day %}
                                             <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Update</button></a></td>
                                             <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
