@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import auth
@@ -222,11 +222,14 @@ def user_login(request):
                 request, username + ', you are successfully logged in!'
                 )
             login(request, user)
-            bookings = Booking.objects.filter(customer=request.user)
-            if bookings:
-                return redirect('user_profile')
+            if user.is_superuser:
+                return HttpResponseRedirect('../admin/')
             else:
-                return redirect('booking')
+                bookings = Booking.objects.filter(customer=request.user)
+                if bookings:
+                    return redirect('user_profile')
+                else:
+                    return redirect('booking')
         else:
             messages.info(
                 request, 'Username or password is wrong! Try again...'

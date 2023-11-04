@@ -181,7 +181,7 @@ The steps and results are as follows.
 
 | Test |  Result |          
 | ------------------ | ------------- |
-|Admin can view data in database tables. | Admin (superuser) can view all data from database tables including ManyToManyField data. To display ManyToManyField data in `list_display` field, a custom method was added to the class `BarberAdmin`. |
+|Admin can view data in database tables. | Admin (superuser) is redirected from the login page to the admin panel. Admin can view all data from database tables including ManyToManyField data. To display ManyToManyField data in `list_display` field, a custom method was added to the class `BarberAdmin`. |
 |Admin can add items to the following tables: Services, Barbers, Working Hours, Bookings and Users| Admin can access to all database tables and can add items to them.  |
 |Admin can edit items in database. | Admin can access all fields in the database tables and make any changes. |
 |Admin can search and filter data in database tables.  | Admin can search and filter data in database tables using custom fields specified in the corresponding classes. |
