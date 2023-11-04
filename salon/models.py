@@ -55,7 +55,7 @@ class WorkingHours(models.Model):
         verbose_name_plural = 'Working Hours'
 
     def __str__(self):
-        return f"""{self.barber}, day {self.day_of_week}, 
+        return f"""{self.barber}, day {self.day_of_week},
                 time {self.time_start}-{self.time_end}"""
 
 
@@ -70,5 +70,6 @@ class Booking(models.Model):
                                 related_name='service_list')
 
     def __str__(self):
-        return f"""User: {self.customer}, Barber: {self.barber}, 
+        return f"""User: {self.customer}, Barber: {self.barber},
                 Service: {self.service}, Date: {self.date}"""
+

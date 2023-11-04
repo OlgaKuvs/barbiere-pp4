@@ -154,7 +154,7 @@ def edit_booking(request, id):
                    'booking': booking,
                    'visit_times': visit_times}
         return render(request, 'edit_booking.html', context)
-    
+
 
 def edit_working_days(barber):
     """
@@ -247,7 +247,7 @@ def user_profile(request):
     """
     bookings = Booking.objects.filter(customer=request.user).order_by('-date')
     next_day = datetime.now() + timedelta(hours=12)
-    context = {'bookings': bookings,'next_day': next_day}
+    context = {'bookings': bookings, 'next_day': next_day}
     return render(request, 'profile.html', context)
 
 

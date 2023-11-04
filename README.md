@@ -390,6 +390,7 @@ If the user does not have appointments, they will see a corresponding text.
 - Allow the user to select `any barber` option if they do not mind which barber's service to use.
 - Add the user's phone number to the booking form so that the salon administrator can call and receive confirmation of attendance for the visit.
 - Send the user a confirmation text message or email to let them know their appointment has been successfully booked.
+- Allow the user to delete their account.
 - Improve the user registration form by replacing username with an email address.
 - Add beautiful animation to the haircut gallery.
 

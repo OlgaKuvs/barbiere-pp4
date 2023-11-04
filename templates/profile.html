@@ -10,48 +10,44 @@
         <div class="col-lg-7">
             <div class="card shadow-lg border-0 rounded-lg mt-5 mb-5">
                 {% if bookings %}
-                    <div class="card-header"><h3 class="centered">Manage your appointments</h3>
-                    </div> 
-                        <table class="table table table-striped">
-                            <thead>
-                                <tr>
-                                    <th scope="col">Service</th>
-                                    <th scope="col">Barber</th>
-                                    <th scope="col">Date and time</th>
-                                    <th scope="col"></th> 
-                                    <th scope="col"></th>                     
-                                </tr>
-                                </thead>
-                                <tbody>                            
-                                {% for booking in bookings %}
-                                    <tr>
-                                        <td> {{ booking.service }}</td>
-                                        <td>{{ booking.barber }}</td>
-                                        <td>{{ booking.date|date:"D, j N, G:i" }}</td>
-                                        {% if booking.date >= next_day %}
-                                            <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Update</button></a></td>
-                                            <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
-                                        {% else %}
-                                            <td class="td_buttons"></td>
-                                            <td class="td_buttons"></td>
-                                        {% endif %} 
-                                    </tr>
-                                {% endfor %} 
+                <div class="card-header"><h3 class="centered">Manage your appointments</h3>
+                </div> 
+                <table class="table table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Service</th>
+                            <th scope="col">Barber</th>
+                            <th scope="col">Date and time</th>
+                            <th scope="col"></th> 
+                            <th scope="col"></th>                     
+                        </tr>
+                    </thead>
+                    <tbody>                            
+                        {% for booking in bookings %}
+                        <tr>
+                            <td> {{ booking.service }}</td>
+                            <td>{{ booking.barber }}</td>
+                            <td>{{ booking.date|date:"D, j N, G:i" }}</td>
+                            {% if booking.date >= next_day %}
+                                <td class="td_buttons"><a href="{% url 'edit_booking' booking.id %}"><button type="button" class="btn-edit btn-table centered">Update</button></a></td>
+                                <td class="td_buttons"><a href="{% url 'delete_booking' booking.id %}"><button type="button" class="btn-delete btn-table centered">Delete</button></a></td>
+                            {% else %}
+                                <td class="td_buttons"></td>
+                                <td class="td_buttons"></td>
+                            {% endif %} 
+                        </tr>
+                        {% endfor %} 
                 {% else %}
-                        <div class="card-header"><h3 class="centered">You have no appointments yet</h3>
-                        </div> 
-                            <table class="table table table-striped">
-                                <thead>                                   
+                    <div class="card-header"><h3 class="centered">You have no appointments yet</h3>
+                    </div>
                 {% endif %}
-                            <tr>
-                                <td colspan="5" class="btn-profile align-middle centered">
-                                    <a class="btn-colour" href="{% url 'booking' %}">Book an appointment</a>
-                                </td>
-                            </tr>                   
-                        </tbody>
-                    </table>
-                    
-                </div>
+                        <tr>
+                            <td colspan="5" class="btn-profile align-middle centered">
+                                <a class="btn-colour" href="{% url 'booking' %}">Book an appointment</a>
+                            </td>
+                        </tr>                   
+                    </tbody>
+                </table>
             </div>            
         </div>
     </div>
