@@ -53,8 +53,6 @@ hr {
     padding-bottom: 15px;    
 }
 
-
-
 /* Navbar */
 
 .nav-container {
@@ -82,9 +80,10 @@ hr {
     letter-spacing: 1px;        
 }
 
-.navbar-toggler, .navbar-toggler:focus,
-.hero-container a:hover, .footer-content a:hover,
-.hero-container a:focus, .footer-content a:focus  {    
+.navbar-toggler, 
+.navbar-toggler:focus,
+.footer-content a:hover,
+.footer-content a:focus  {    
     border-style: none; 
     color: #eee;          
   }
@@ -109,10 +108,8 @@ hr {
 #login, #logout, #profile  {
     margin-left: 10px;
     margin-top: 5px;
-    background-color: #f75c37;
     color: #222227;
-    font-weight: 600;   
-    border-color: #f16a48;
+    font-weight: 600;
     border-radius: 20px;    
     padding: 7px;   
 }
@@ -138,15 +135,12 @@ hr {
     position: relative;      
 }
 
-.hero-container a, 
 .footer-sign-in a,
 .header-sign-in a,
 .btn-profile a {   
     color: #222227;  
     font-size: 20px;
-    font-weight: 400;  
-    background-color: #f75c37;
-    border-color: #f16a48; 
+    font-weight: 400; 
     border-radius: 20px;
     margin-right: 20px;
     padding: 10px;
@@ -167,14 +161,6 @@ hr {
     align-items: flex-end;
     letter-spacing: 5px;
 }
-
-/* .btn-fixed {
-    position: fixed;    
-    right: 10px;
-    z-index: 2;
-} */
-
-
 
 /* Services container */
 
@@ -247,20 +233,11 @@ hr {
     transition: 0.5s !important;  
 }
 
-/* .btn-reg {    
-    color: #222227;  
-    font-size: 20px;
-    font-weight: 400;  
+.btn-colour {    
     background-color: #f75c37; 
-    border-color: #f16a48;
-    border-radius: 20px;
-    margin-right: 20px;
-    padding: 10px;
-    text-decoration: none;
-} */
+    border-color: #f16a48;    
+} 
 
-/* .btn-reg:hover, */
-.hero-container a:hover,
 #login:hover, 
 #logout:hover, 
 #profile:hover,
@@ -280,8 +257,6 @@ hr {
 }
 
 .btn-book {
-    background-color: #f75c37;  
-    border-color: #f16a48;
     color: #222227;
     padding: 5px 25px;
     border-radius: 20px; 
@@ -311,8 +286,6 @@ hr {
 }
 
 .btn-yes {
-    background-color: #f75c37;
-    border-color: #f16a48;
     padding: 5px 25px;
     border-radius: 20px; 
     border-style: none;    
@@ -541,12 +514,9 @@ hr {
         font-size: 12px;
     }
 
-    .hero-container a, 
     .footer-sign-in a,
     .header-sign-in a,
-    .btn-profile a
-    /* ,  .btn-reg  */
-    { 
+    .btn-profile a { 
         font-size: 15px;    
         border-radius: 20px;
         margin-right: 10px;
