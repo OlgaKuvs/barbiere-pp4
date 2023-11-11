@@ -22,12 +22,11 @@
                   <div>
                   <a class="navbar-brand logo" href="{% url 'index' %}"><img src="{% static 'img/logo.png' %}" alt="Barbershop"></a>                           
                   <a class="navbar-brand brand link" href="{% url 'index' %}">Barbiere Maestro</a> 
-                  </div>
-                  {% if not user.is_authenticated %}
+                  </div>                 
                   <div class="header-sign-in justify-content-center">
-                     <a class="btn-colour" href="{% url 'registration' %}">Book now!</a>     
-                  </div>
-                  {% endif %}
+                     <a class="btn-colour" {% if not user.is_authenticated %} href="{% url 'registration' %}"
+                     {% else %} href="{% url 'booking' %}"{% endif %}>Book now!</a>     
+                  </div>                  
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
                      <span class="navbar-toggler-icon"></span>
                </button>                             
@@ -116,31 +115,26 @@
                         <li class="mb-3">Sun: Closed</li>
                      </ul>
                   </div>
+               </div>
+               <div class="col-lg-6 col-md-4 col-sm-12">
+                  <div class="footer-content footer-sign-in centered">
+                     <a class="btn-colour" {% if not user.is_authenticated %}
+                     href="{% url 'registration' %}"
+                     {% else %} href="{% url 'booking' %}"{% endif %}>Book now!</a>
                   </div>
-                  {% if user.is_authenticated %}
-                  <div class="col-lg-6 col-md-5 col-sm-auto">
-                     <div class="footer-content footer-sign-in centered">                                      
-                     </div>
+               </div>
+               <div class="col-lg-3 col-md-4 col-sm-12 menu-r">
+                  <div class="footer-content">
+                     <ul>
+                        <li><h5>Contact</h5></li>
+                        <li class="mb-3">1 Upper Road, Dublin</li>
+                        <li class="mb-3"> Ireland </li>
+                        <li class="mb-3"> email@yahoo.com</li>
+                     </ul>
                   </div>
-                  {% else %}
-                  <div class="col-lg-6 col-md-5 col-sm-12">
-                     <div class="footer-content footer-sign-in centered">
-                        <a class="btn-colour" href="{% url 'registration' %}">Book now!</a>                 
-                     </div>
-                  </div>
-                  {% endif %}
-                  <div class="col-lg-3 col-md-3 col-sm-12 menu-r">
-                     <div class="footer-content">
-                        <ul>
-                           <li><h5>Contact</h5></li>
-                           <li class="mb-3">1 Upper Road, Dublin</li>
-                           <li class="mb-3"> Ireland </li>
-                           <li class="mb-3"> email@yahoo.com</li>
-                        </ul>
-                     </div>
-                  </div>                 
-               </div>         
-            </div>
+               </div>                 
+            </div>         
+         </div>
       <!-- Copyright -->
          <div class="text-center p-3 copyright">
             <span>© 2023 Copyright: Olga Kuv</span>

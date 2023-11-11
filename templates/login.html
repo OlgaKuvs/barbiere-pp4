@@ -12,14 +12,14 @@
                 <div class="card-header"><h3 class="centered">Log in</h3>
                     <div class="small centered">
                         <a href="{% url 'registration' %}">
-                            Don't have an account? Please sign in.
+                            Don't have an account? Please sign up.
                         </a>
                     </div>
                 </div>
                 <div class="card-body">
 
                     {% csrf_token %}
-                    <!-- {{ form|as_crispy_errors }} -->
+                  
                     {% crispy form %} 
                     
                 </div>                
