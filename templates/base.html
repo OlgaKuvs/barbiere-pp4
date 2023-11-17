@@ -24,7 +24,7 @@
                   <a class="navbar-brand brand link" href="{% url 'index' %}">Barbiere Maestro</a> 
                   </div>                 
                   <div class="header-sign-in justify-content-center">
-                     <a class="btn-colour" {% if not user.is_authenticated %} href="{% url 'registration' %}"
+                     <a class="btn-colour text-nowrap" {% if not user.is_authenticated %} href="{% url 'registration' %}"
                      {% else %} href="{% url 'booking' %}"{% endif %}>Book now!</a>     
                   </div>                  
                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDropdown" aria-controls="navbarDropdown" aria-expanded="false" aria-label="Toggle navigation">
